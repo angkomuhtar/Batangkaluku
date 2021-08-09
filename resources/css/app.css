@@ -22,7 +22,7 @@
     transition-property: transform;
     @apply flex-shrink-0 w-full h-full relative 
 }
-.swiper-slide img{
+.swiper-slide>img{
     @apply w-full object-cover h-banner
 }
 .swiper-pagination{
