@@ -661,6 +661,12 @@ video {
 .h-auto {
 	height: auto;
 }
+.h-96 {
+	height: 24rem;
+}
+.max-h-96 {
+	max-height: 24rem;
+}
 .w-2\/12 {
 	width: 16.666667%;
 }
@@ -672,6 +678,9 @@ video {
 }
 .w-auto {
 	width: auto;
+}
+.w-1\/2 {
+	width: 50%;
 }
 .flex-1 {
 	flex: 1 1 0%;
@@ -736,6 +745,9 @@ video {
 	--tw-space-y-reverse: 0;
 	margin-top: calc(5rem * calc(1 - var(--tw-space-y-reverse)));
 	margin-bottom: calc(5rem * var(--tw-space-y-reverse));
+}
+.overflow-y-auto {
+	overflow-y: auto;
 }
 .rounded {
 	border-radius: 0.25rem;

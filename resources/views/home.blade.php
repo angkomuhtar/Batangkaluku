@@ -186,11 +186,31 @@
             <div class="swiper-pagination"></div>
             </div>
         </section>
+
+
+        <section class="container mb-20">
+            <div class="grid grid-cols-3">
+                <div class="max-h-96 overflow-y-auto">
+                    <a class="twitter-timeline" href="https://twitter.com/TwitterDev?ref_src=twsrc%5Etfw">Tweets by TwitterDev</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                </div>
+
+                <div class="max-h-96 overflow-y-auto">
+                    <script src="https://apis.google.com/js/platform.js"></script>
+                    <div class="g-ytsubscribe" data-channel="GoogleDevelopers" data-layout="default" data-count="default"></div>
+                </div>
+                
+                <div class="max-h-96 overflow-y-auto">
+                    <iframe src="https://www.youtube.com/embed/?listType=user_uploads&list=PLC77007E23FF423C6" class="h-96" ></iframe>
+                </div>
+
+            </div>
+        </section>
 @endsection
 
 @push('add-script')
 
 <script>
+    
     let apikey = "084a2d4cc7b7bcad0eca16b89d961937";
     
     var swiper = new Swiper(".mySwiper", {
