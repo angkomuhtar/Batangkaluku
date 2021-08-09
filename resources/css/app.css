@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;0,800;1,800&display=swap');
+
+
+.btn-sm-secondary{
+    @apply bg-white border border-secondary py-2 px-4 text-xs text-secondary rounded-md 
+}
+.swiper-container{
+    z-index: 1;
+    @apply relative list-none p-0 overflow-x-hidden
+}
+
+.swiper-wrapper{
+    z-index: 1;
+    transition-property: transform;
+    @apply w-full h-full flex box-content 
+}
+.swiper-slide{
+    transition-property: transform;
+    @apply flex-shrink-0 w-full h-full relative 
+}
+.swiper-slide img{
+    @apply w-full object-cover h-banner
+}
+.swiper-pagination{
+    @apply w-full flex justify-center space-x-2 py-2 pt-4
+}
+
+.swiper-pagination-bullet{
+    @apply w-5 h-1 bg-darkGrey opacity-30 rounded-sm
+} 
+
+.swiper-pagination-bullet-active{
+    @apply opacity-100
+}
+
+.header-title{
+    @apply font-bold text-3xl text-center mb-10
+}
+
+.header-subtitle{
+    @apply text-darkGrey text-lg text-center mb-20
+}

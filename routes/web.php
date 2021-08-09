@@ -14,5 +14,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
+});
+
+Route::group(['prefix' => 'bantuan'], function(){
+    Route::get('faq',function(){
+        return view('page.help.faq');
+    });
+    Route::get('about',function(){
+        return view('page.help.about');
+    });
 });
