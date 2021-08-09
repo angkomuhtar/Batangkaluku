@@ -21,7 +21,7 @@
                 Update Covid-19 Indonesia
             </h2>
             <p class="header-subtitle">Pembaruan terakhir 2021-06-21 03:07:15</p>
-            <div class="grid grid-col-2 lg:grid-cols-4 gap-6">
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
                 <div class="py-10 items-center rounded-lg flex flex-col justify-center bg-opacity-20 bg-confirmed">
                     <div class="p-3 rounded-xl bg-opacity-30 mb-5 bg-confirmed">
                         <svg class="h-10" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 40 40">
