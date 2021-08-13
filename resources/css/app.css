@@ -44,3 +44,9 @@
 .header-subtitle{
     @apply text-darkGrey text-lg text-center mb-20
 }
+.footer-head{
+    @apply font-semibold text-secondary text-xs uppercase mb-3
+}
+.footer-list{
+    @apply text-white text-sm
+}

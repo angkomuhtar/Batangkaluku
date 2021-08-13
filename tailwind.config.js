@@ -23,6 +23,7 @@ module.exports = {
         "injury" : "#FF8700",
         "heal" : "#4BA83D",
         "death" : "#DC3434",
+        "darken" : "#043A3A"
       },
       height: {
         "banner" : "480px"

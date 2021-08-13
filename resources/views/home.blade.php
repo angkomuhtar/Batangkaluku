@@ -188,7 +188,7 @@
         </section>
 
 
-        <section class="container mb-20">
+        <!-- <section class="container mb-20">
             <div class="grid grid-cols-3">
                 <div class="max-h-96 overflow-y-auto">
                     <a class="twitter-timeline" href="https://twitter.com/TwitterDev?ref_src=twsrc%5Etfw">Tweets by TwitterDev</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
@@ -204,7 +204,7 @@
                 </div>
 
             </div>
-        </section>
+        </section> -->
 @endsection
 
 @push('add-script')

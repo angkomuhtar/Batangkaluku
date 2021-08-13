@@ -17,6 +17,66 @@
         @yield('main')
     </main>
 
+    <footer class="bg-primary">
+        <div class="container">
+            <div class="py-20 grid grid-cols-4 gap-10">
+                <div class="space-y-10"> 
+                    <img src="{{asset('assets/img/logo.png') }}" class="w-full">
+                    <div class="alamat">
+                        <h6 class="footer-head">Alamat Kantor</h6>
+                        <p class="footer-list">Jl. Poros Malino, Tamarunang, Somba Opu, Kabupaten Gowa, Sulawesi Selatan 92117, Indonesia</p>
+                    </div>
+                </div>
+                <div class="space-y-10"> 
+                    <div class="link">
+                        <h6 class="footer-head">link terkait</h6>
+                        <ul class="space-y-1">
+                            <li><a href="#" class="footer-list">Kementrian Pertanian</a></li>
+                            <li><a href="#" class="footer-list">CYBEX Pertanian</a></li>
+                            <li><a href="#" class="footer-list">BPPDMP</a></li>
+                            <li><a href="#" class="footer-list">WBS</a></li>
+                            <li><a href="#" class="footer-list">BBPP Lembang</a></li>
+                            <li><a href="#" class="footer-list">BBPP Batu</a></li>
+                        </ul>
+                    </div>    
+                </div>
+                <div class="space-y-10"> 
+                    <div class="rate">
+                        <h6 class="footer-head">Ulas Website kami</h6>
+                        <ul class="space-y-1">
+                            <li class="footer-list flex items-center"><input type="radio" name="" id="" class="mr-2"> Sangat Baik</li>
+                            <li class="footer-list flex items-center"><input type="radio" name="" id="" class="mr-2"> Baik</li>
+                            <li class="footer-list flex items-center"><input type="radio" name="" id="" class="mr-2"> Cukup</li>
+                            <li class="footer-list flex items-center"><input type="radio" name="" id="" class="mr-2"> Kurang Baik</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="space-y-10"> 
+                    <div class="link">
+                        <h6 class="footer-head">Kontak KAMI</h6>
+                        <ul class="space-y-1">
+                            <li><a href="#" class="footer-list">+0411 - 866396</a></li>
+                            <li><a href="#" class="footer-list">infobbpp@pertanian.go.id</a></li>
+                        </ul>
+                    </div>    
+                    <div class="link">
+                        <h6 class="footer-head">jumlah pengunjung</h6>
+                        <ul class="space-y-1">
+                            <li><a href="#" class="footer-list">Pages</a></li>
+                            <li><a href="#" class="footer-list">Online</a></li>
+                            <li><a href="#" class="footer-list">Pengunjung Hari Ini</a></li>
+                        </ul>
+                    </div>   
+
+                </div>
+            </div>
+        </div>
+        <div class="bg-darken py-9">
+            <p class="text-white text-center">
+                    Copyright © BBPP Batangkaluku - Kementerian Pertanian R.I.
+            </p>
+        </div>
+    </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" referrerpolicy="no-referrer"></script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
