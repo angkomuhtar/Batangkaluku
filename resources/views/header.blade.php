@@ -20,12 +20,12 @@
     <nav class="container flex items-center justify-between py-7">
         <img src="{{ asset('assets/img/logo.png') }}" alt="" class="h-10 w-auto">
         <ul class=" hidden lg:flex space-x-8 ">
-            <li class="capitalize hover:text-secondary active:text-secondary"><a href=""> Beranda</a></li>
-            <li class="capitalize hover:text-secondary active:text-secondary"><a href=""> lembaga</a></li>
-            <li class="capitalize hover:text-secondary active:text-secondary"><a href=""> Artikel berita</a></li>
-            <li class="capitalize hover:text-secondary active:text-secondary"><a href=""> Layanan</a></li>
-            <li class="capitalize hover:text-secondary active:text-secondary"><a href=""> Satuan kerja</a></li>
-            <li class="capitalize hover:text-secondary active:text-secondary"><a href=""> Galeri</a></li>
+            <li class="capitalize hover:text-secondary active:text-secondary"><a href="{{url('/')}}"> Beranda</a></li>
+            <li class="capitalize hover:text-secondary active:text-secondary"><a href="{{url('lembaga/tentang')}}"> lembaga</a></li>
+            <li class="capitalize hover:text-secondary active:text-secondary"><a href="{{url('artikel/pelatihan')}}"> Artikel berita</a></li>
+            <li class="capitalize hover:text-secondary active:text-secondary"><a href="{{url('layanan')}}"> Layanan</a></li>
+            <li class="capitalize hover:text-secondary active:text-secondary"><a href="{{url('satker/spi')}}"> Satuan kerja</a></li>
+            <li class="capitalize hover:text-secondary active:text-secondary"><a href="{{url('galeri/photo')}}"> Galeri</a></li>
         </ul>
         <a href="" class="btn-sm-secondary hover:text-white hover:bg-secondary" >Kontak</a>
     </nav>

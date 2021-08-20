@@ -75,7 +75,7 @@
                 Berita Terbaru
             </h2>
             <p class="header-subtitle">Berikut berita terkait BBPP Batangkaluku yang dapat Anda akses</p>
-            <div class="grid grid-cols-3 gap-10">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 @for($i=1; $i <= 6; $i++)
                 <div class="rounded-sm">
                     <img class="rounded-sm w-full h-auto" src="https://images.unsplash.com/photo-1589923188900-85dae523342b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80" alt="">
@@ -94,8 +94,8 @@
                 Zona Integrasi
             </h2>
             <p class="header-subtitle">Menolak Suap, Pungli dan Gratifikasi</p>
-            <div class="grid grid-cols-2 gap-10">
-                <div class="space-y-5 items-center flex flex-col justify-center">
+            <div class="grid lg:grid-cols-2 gap-10">
+                <div class="space-y-5 items-center flex flex-col justify-center order-last lg:order-none">
                     <div class="flex justify-between items-center p-4 border rounded-md w-full">
                         <div class="space-x-5 flex">
                             <img src="{{asset('assets/img/integrasi/wbs.png')}}" alt="">
@@ -150,7 +150,7 @@
                 Artikel Pertanian
             </h2>
             <p class="header-subtitle">Baca artikel tentang pertanian disini</p>
-            <div class="grid grid-cols-2 gap-10">
+            <div class="grid lg:grid-cols-2 gap-6">
                 @for($i=1; $i <= 4; $i++)
                 <div class="rounded-sm grid grid-cols-3 gap-5">
                     <img class="rounded-sm w-full h-auto" src="https://images.unsplash.com/photo-1589923188900-85dae523342b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80" alt="">
@@ -187,24 +187,12 @@
             </div>
         </section>
 
-
-        <!-- <section class="container mb-20">
-            <div class="grid grid-cols-3">
-                <div class="max-h-96 overflow-y-auto">
-                    <a class="twitter-timeline" href="https://twitter.com/TwitterDev?ref_src=twsrc%5Etfw">Tweets by TwitterDev</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-                </div>
-
-                <div class="max-h-96 overflow-y-auto">
-                    <script src="https://apis.google.com/js/platform.js"></script>
-                    <div class="g-ytsubscribe" data-channel="GoogleDevelopers" data-layout="default" data-count="default"></div>
-                </div>
-                
-                <div class="max-h-96 overflow-y-auto">
-                    <iframe src="https://www.youtube.com/embed/?listType=user_uploads&list=PLC77007E23FF423C6" class="h-96" ></iframe>
-                </div>
-
-            </div>
-        </section> -->
+        <section class="container">
+            <h2 class="header-title">
+                Info Cuaca & Iklim
+            </h2>
+            
+        </section>
 @endsection
 
 @push('add-script')
@@ -212,6 +200,31 @@
 <script>
     
     let apikey = "084a2d4cc7b7bcad0eca16b89d961937";
+    $.get("https://api.openweathermap.org/data/2.5/weather?q=makassar&appid=084a2d4cc7b7bcad0eca16b89d961937", function( data ) {
+        console.log(data.weather[0]);
+        const {main, icon, description}  = data.weather[0];
+    });
+
+
+    let weather ={
+        apikey: "084a2d4cc7b7bcad0eca16b89d961937",
+        fetchWeather: function (city){
+            fetch(
+                "https://api.openweathermap.org/data/2.5/weather?q="
+                +city
+                +"&appid="
+                +this.apikey
+            )
+            .then((response) => response.json())
+            .then((data) => this.displayWeather(data));
+        },
+        displayWeather: function(data){
+            const { name } = data;
+            const { icon, description } = data.weather[0];
+            const { temp, humidity } = data.main;
+            console.log(name, icon, temp);
+        }
+    }
     
     var swiper = new Swiper(".mySwiper", {
         slidesPerView: 1,
