@@ -206,7 +206,7 @@
                             <img class="" src="https://openweathermap.org/img/wn/02n@2x.png" alt="">
                         </div>
                         <div>
-                            <h2 class="font-semibold text-md desc"></h2>
+                            <h2 class="font-semibold text-md desc capitalize"></h2>
                             <h2 class="font-semibold text-md kelembapan">Kelembapan : <span>6</span> %</h2>
                             <h2 class="font-semibold text-md angin">Kecepatan Angin : <span>6</span> Km/jam</h2>
                         </div>
