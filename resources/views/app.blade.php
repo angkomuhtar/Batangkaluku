@@ -17,9 +17,9 @@
         @yield('main')
     </main>
 
-    <footer class="bg-primary">
+    <footer class="bg-primary mt-5">
         <div class="container">
-            <div class="py-20 grid grid-cols-4 gap-10">
+            <div class="py-20 grid grid-cols-2 lg:grid-cols-4 gap-10">
                 <div class="space-y-10"> 
                     <img src="{{asset('assets/img/logo.png') }}" class="w-full">
                     <div class="alamat">
@@ -67,7 +67,6 @@
                             <li><a href="#" class="footer-list">Pengunjung Hari Ini</a></li>
                         </ul>
                     </div>   
-
                 </div>
             </div>
         </div>

@@ -23,7 +23,7 @@
     @apply flex-shrink-0 w-full h-full relative 
 }
 .swiper-slide>img{
-    @apply w-full object-cover h-banner
+    @apply w-full object-fill h-48 lg:h-banner
 }
 .swiper-pagination{
     @apply w-full flex justify-center space-x-2 py-2 pt-4
@@ -49,4 +49,49 @@
 }
 .footer-list{
     @apply text-white text-sm
+}
+
+.text-header-1{
+    @apply font-bold text-2xl lg:text-5xl leading-snug 
+}
+.text-header-2{
+    @apply font-bold text-4xl lg:text-5xl leading-snug
+}
+.text-header-3{
+    @apply text-lg lg:text-3xl leading-tight
+}
+
+.text-title{
+    font-size: 22px;
+    @apply font-semibold
+}
+
+.text-subtitle-3{
+    @apply font-normal text-sm
+}
+.text-overline{
+    @apply text-xs text-darkGrey
+}
+
+.text-body{
+    @apply text-sm text-darkGrey leading-7 text-justify
+}
+.section{
+    @apply container grid lg:grid-cols-4 gap-10 pb-10
+}
+
+.side-menu{
+    @apply p-4 text-darkGrey text-sm whitespace-nowrap
+}
+
+.side-menu:hover{
+    @apply p-4 text-secondary font-semibold text-sm bg-opacity-10 bg-secondary
+}
+
+.side-menu.active{
+    @apply p-4 text-secondary font-semibold text-sm bg-opacity-10 bg-secondary
+}
+
+.collapsible.open{
+    @apply bg-background
 }
