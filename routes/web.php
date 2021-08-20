@@ -96,6 +96,9 @@ Route::group(['prefix' => 'galeri'], function(){
 });
 
 Route::group(['prefix' => 'dashboard'], function () {
+    Route::get('',function (){
+        return redirect()->route('dashboard');
+    });
     Route::group(['middleware' => 'guest'],function(){
         Route::get('login',[AuthController::class,'index'])->name('login');
         Route::post('login',[AuthController::class,'login']);
