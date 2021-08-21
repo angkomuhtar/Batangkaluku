@@ -40,4 +40,6 @@ return [
     'about_us' => 'About Us',
     'org_structure' => 'Organizational Structure',
     'human_resources' => 'Human Resources',
+    'album_photo' => 'Photo Album',
+    'album_video' => 'Video Album'
 ];

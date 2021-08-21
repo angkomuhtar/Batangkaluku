@@ -40,4 +40,6 @@ return [
     'about_us' => 'Tetang Kami',
     'org_structure' => 'Struktur Organisasi',
     'human_resources' => 'Sumber Daya Manusia',
+    'album_photo' => 'Album Foto',
+    'album_video' => 'Album Video'
 ];

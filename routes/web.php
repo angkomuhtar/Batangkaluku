@@ -12,6 +12,7 @@ use App\Http\Controllers\Dashboard\SliderController;
 use App\Http\Controllers\Dashboard\UserController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LembagaController;
+use App\Http\Controllers\GaleriController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -83,12 +84,8 @@ Route::group([''], function () {
     });
 
     Route::group(['prefix' => 'galeri'], function () {
-        Route::get('photo', function () {
-            return view('galeri.photo');
-        });
-        Route::get('video', function () {
-            return view('galeri.video');
-        });
+        Route::get('photo',[GaleriController::class,'photo'])->name('gallery.photo');
+        Route::get('video',[GaleriController::class,'video'])->name('gallery.video');
     });
 });
 
