@@ -68,7 +68,7 @@ class DepartmentController extends DashboardController
             DB::rollBack();
             return response()->json([
                 'message' => $exception->getMessage()
-            ]);
+            ],500);
         }
         DB::commit();
         return response()->json([
@@ -91,7 +91,7 @@ class DepartmentController extends DashboardController
             DB::rollBack();
             return response()->json([
                 'message' => $exception->getMessage()
-            ]);
+            ],500);
         }
         DB::commit();
         return response()->json([

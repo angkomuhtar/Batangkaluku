@@ -11,6 +11,7 @@ use App\Http\Controllers\Dashboard\SliderController;
 use App\Http\Controllers\Dashboard\AuthController;
 use App\Http\Controllers\Dashboard\UserController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LembagaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,15 +30,9 @@ Route::group([''],function (){
     Route::get('', [HomeController::class,'index'])->name('home');
 
     Route::group(['prefix' => 'lembaga'], function(){
-        Route::get('tentang',function(){
-            return view('lembaga.tentang');
-        });
-        Route::get('struktur',function(){
-            return view('lembaga.struktur');
-        });
-        Route::get('sdm',function(){
-            return view('lembaga.sdm');
-        });
+        Route::get('tentang',[LembagaController::class,'tentang'])->name('lembaga.tentang');
+        Route::get('struktur',[LembagaController::class,'struktur'])->name('lembaga.struktur');
+        Route::get('sdm',[LembagaController::class,'sdm'])->name('lembaga.sdm');
     });
 
 

@@ -104,9 +104,9 @@
                     <label for=""> Tingkatan *</label>
                     <select data-error="tingkatan is required" name="level_id" class="form-control" required>
                         <option value="">-- Pilih Tingkatan --</option>
-                        <option value="1">Kepala</option>
-                        <option value="2">Sekertaris </option>
-                        <option value="3">Anggota </option>
+                        <option value="1" {{$data->level_id == 1 ? 'selected' : ''}}>Kepala</option>
+                        <option value="2" {{$data->level_id == 2 ? 'selected' : ''}}>Sekertaris </option>
+                        <option value="3" {{$data->level_id == 3 ? 'selected' : ''}}>Anggota </option>
                     </select>
                     <div class="help-block form-text with-errors form-control-feedback">
 

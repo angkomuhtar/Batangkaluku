@@ -63,6 +63,7 @@ class HumanResourcesController extends DashboardController
             'department_id' => 'required',
             'image' => 'required|image',
             'name' => 'required',
+            'nip' => 'required',
             'position' => 'required',
             'position_en' => '',
             'level_id' => 'required',
@@ -80,7 +81,7 @@ class HumanResourcesController extends DashboardController
             DB::rollBack();
             return response()->json([
                 'message' => $exception->getMessage()
-            ]);
+            ],500);
         }
         DB::commit();
         return response()->json([
@@ -93,6 +94,7 @@ class HumanResourcesController extends DashboardController
             'department_id' => 'required',
             'image' => 'image',
             'name' => 'required',
+            'nip' => 'required',
             'position' => 'required',
             'position_en' => '',
             'level_id' => 'required',
@@ -111,7 +113,7 @@ class HumanResourcesController extends DashboardController
             DB::rollBack();
             return response()->json([
                 'message' => $exception->getMessage()
-            ]);
+            ],500);
         }
         DB::commit();
         return response()->json([

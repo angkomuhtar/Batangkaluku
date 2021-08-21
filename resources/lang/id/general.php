@@ -37,4 +37,7 @@ return [
     'unit_work' => 'Satuan Kerja',
     'gallery' => 'Galeri',
     'ministry' => 'Kementerian Pertanian',
+    'about_us' => 'Tetang Kami',
+    'org_structure' => 'Struktur Organisasi',
+    'human_resources' => 'Sumber Daya Manusia',
 ];

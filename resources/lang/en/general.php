@@ -37,4 +37,7 @@ return [
     'unit_work' => 'Unit Work',
     'gallery' => 'Gallery',
     'ministry' => 'Ministry of Agriculture',
+    'about_us' => 'About Us',
+    'org_structure' => 'Organizational Structure',
+    'human_resources' => 'Human Resources',
 ];
