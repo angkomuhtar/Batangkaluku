@@ -11,7 +11,9 @@ class LayananController extends Controller
 {
     public function index($service){
         $lang = request()->query('lang','id');
-        if (!$data = Page::with('pageAttachments')->where('name', $service)->first()) {
+        if (!$data = Page::with('pageAttachments')
+            ->where('type','layanan_dan_informasi')
+            ->where('name', $service)->first()) {
             $data = Page::create([
                 'name' => $service,
                 'title' => '',

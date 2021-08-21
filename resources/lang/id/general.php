@@ -47,5 +47,5 @@ return [
     'finish' => 'Selesai',
     'officer_name' => 'Nama Pejabat',
     'rank_class' => 'Pangkat / Golongan',
-    'position' => 'Jabatan'
+    'position' => 'Jabatan',
 ];

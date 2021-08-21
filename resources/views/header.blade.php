@@ -24,7 +24,7 @@
             <li class="capitalize hover:text-secondary active:text-secondary"><a href="{{route('lembaga.tentang',['lang' => $lang])}}"> {{__('general.institution')}}</a></li>
             <li class="capitalize hover:text-secondary active:text-secondary"><a href="{{route('artikel',['lang' => $lang,'type' => 'pelatihan'])}}"> {{__('general.news')}}</a></li>
             <li class="capitalize hover:text-secondary active:text-secondary"><a href="{{route('layanan',['lang' => $lang,'service' => 'sop_balai'])}}"> {{__('general.service')}}</a></li>
-            <li class="capitalize hover:text-secondary active:text-secondary"><a href="{{url('satker/spi')}}"> {{__('general.unit_work')}}</a></li>
+            <li class="capitalize hover:text-secondary active:text-secondary"><a href="{{route('satker',['lang' => $lang,'service' => 'sistem_pengendalian_intern'])}}"> {{__('general.unit_work')}}</a></li>
             <li class="capitalize hover:text-secondary active:text-secondary"><a href="{{route('gallery.photo',['lang' => $lang])}}"> {{__('general.gallery')}}</a></li>
         </ul>
         <div>

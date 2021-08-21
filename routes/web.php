@@ -15,6 +15,7 @@ use App\Http\Controllers\LembagaController;
 use App\Http\Controllers\GaleriController;
 use App\Http\Controllers\ArtikelController;
 use App\Http\Controllers\LayananController;
+use App\Http\Controllers\SatuanKerjaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,45 +33,38 @@ Route::group([''], function () {
     app()->setLocale($locale);
     Route::get('', [HomeController::class, 'index'])->name('home');
 
-    Route::group(['prefix' => 'lembaga'], function () {
+    Route::group(['prefix' => 'lembaga'], function () use ($locale) {
+        Route::get('',function () use ($locale){
+            return redirect()->route('lembaga.tentang',['lang' => $locale]);
+        });
         Route::get('tentang', [LembagaController::class, 'tentang'])->name('lembaga.tentang');
         Route::get('struktur', [LembagaController::class, 'struktur'])->name('lembaga.struktur');
         Route::get('sdm', [LembagaController::class, 'sdm'])->name('lembaga.sdm');
     });
-
-
+    Route::get('artikel',function () use ($locale){
+        return redirect()->route('artikel',['lang' => $locale,'type' => 'pelatihan']);
+    });
     Route::group(['prefix' => 'artikel/{type}'], function () {
         Route::get('',[ArtikelController::class,'index'])->name('artikel');
         Route::get('{id}-{title}',[ArtikelController::class,'detail'])->name('artikel.detail');
     });
-
+    Route::get('layanan',function () use ($locale){
+        return redirect()->route('layanan',['lang' => $locale,'service' => 'sop_balai']);
+    });
     Route::group(['prefix' => 'layanan/{service}'], function () {
         Route::get('',[LayananController::class,'index'])->name('layanan');
     });
-
-
-    Route::group(['prefix' => 'satker'], function () {
-        Route::get('spi', function () {
-            return view('satker.spi');
-        });
-        Route::get('wbk', function () {
-            return view('satker.wbk');
-        });
-        Route::get('ppid', function () {
-            return view('satker.ppid');
-        });
-        Route::get('pengadaan', function () {
-            return view('satker.pengadaan');
-        });
-        Route::get('perpustakaan', function () {
-            return view('satker.perpustakaan');
-        });
-        Route::get('iso', function () {
-            return view('satker.iso');
-        });
+    Route::get('satker',function () use ($locale){
+        return redirect()->route('satker',['lang' => $locale,'service' => 'sistem_pengendalian_intern']);
+    });
+    Route::group(['prefix' => 'satker/{service}'], function () {
+        Route::get('',[SatuanKerjaController::class,'index'])->name('satker');
     });
 
-    Route::group(['prefix' => 'galeri'], function () {
+    Route::group(['prefix' => 'galeri'], function () use ($locale) {
+        Route::get('',function () use ($locale){
+           return redirect()->route('gallery.photo',['lang' => $locale]);
+        });
         Route::get('photo',[GaleriController::class,'photo'])->name('gallery.photo');
         Route::get('video',[GaleriController::class,'video'])->name('gallery.video');
     });
