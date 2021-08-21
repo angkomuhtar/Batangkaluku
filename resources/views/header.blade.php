@@ -22,7 +22,7 @@
         <ul class=" hidden lg:flex space-x-8 ">
             <li class="capitalize hover:text-secondary active:text-secondary"><a href="{{route('home',['lang' => $lang])}}"> {{__('general.home')}}</a></li>
             <li class="capitalize hover:text-secondary active:text-secondary"><a href="{{route('lembaga.tentang',['lang' => $lang])}}"> {{__('general.institution')}}</a></li>
-            <li class="capitalize hover:text-secondary active:text-secondary"><a href="{{url('artikel/pelatihan')}}"> {{__('general.news')}}</a></li>
+            <li class="capitalize hover:text-secondary active:text-secondary"><a href="{{route('artikel',['lang' => $lang,'type' => 'pelatihan'])}}"> {{__('general.news')}}</a></li>
             <li class="capitalize hover:text-secondary active:text-secondary"><a href="{{url('layanan')}}"> {{__('general.service')}}</a></li>
             <li class="capitalize hover:text-secondary active:text-secondary"><a href="{{url('satker/spi')}}"> {{__('general.unit_work')}}</a></li>
             <li class="capitalize hover:text-secondary active:text-secondary"><a href="{{route('gallery.photo',['lang' => $lang])}}"> {{__('general.gallery')}}</a></li>
