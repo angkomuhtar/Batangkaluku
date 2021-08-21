@@ -42,6 +42,15 @@
                         </div>
                         <div class="col-sm-6 d-none d-xxxxl-block">
                             <div class="legend-value-w">
+                                <div class="legend-pin legend-pin-squared" style="background-color: #ffdc00;"></div>
+                                <div class="legend-value">
+                                    <span>Dirawat</span>
+                                    <div class="legend-sub-value">
+                                        <strong id="persen-dirawat">0</strong> %, <strong id="jumlah-dirawat">0</strong> Kasus
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="legend-value-w">
                                 <div class="legend-pin legend-pin-squared" style="background-color: #d97b70;"></div>
                                 <div class="legend-value">
                                     <span>Meninggal</span>
@@ -60,28 +69,34 @@
 @push('addon-script')
     <script>
         $(document).ready(function (){
-            showCovid({
-                positif : 1348749,
-                sembuh : 177374,
-                meninggal : 471291
-             })
             $.get('{{route('dashboard.ajax.covid')}}')
                 .then(function (res){
+                    res.positif = parseInt(res.positif.replace(/,/g,""))
+                    res.sembuh = parseInt(res.sembuh.replace(/,/g,""))
+                    res.meninggal = parseInt(res.meninggal.replace(/,/g,""))
+                    res.dirawat = parseInt(res.dirawat.replace(/,/g,""))
+                    localStorage.setItem('covid',res);
                     showCovid(res)
+                },function (){
+                    var covid = localStorage.getItem('covid');
+                    showCovid(covid)
                 })
         })
         function showCovid(res){
             var positif = parseInt(res.positif);
             var sembuh = parseInt(res.sembuh);
             var meninggal = parseInt(res.meninggal);
-            var total = positif+sembuh+meninggal;
+            var dirawat = parseInt(res.dirawat);
+            var total = positif+sembuh+meninggal+dirawat;
             $('#total-kasus').html(total.toLocaleString());
             $('#jumlah-positif').html(positif.toLocaleString());
             $('#jumlah-sembuh').html(sembuh.toLocaleString());
             $('#jumlah-meninggal').html(meninggal.toLocaleString());
+            $('#jumlah-dirawat').html(dirawat.toLocaleString());
 
             $('#persen-positif').html(Math.round(positif/total * 100));
             $('#persen-sembuh').html(Math.round(sembuh/total * 100));
+            $('#persen-dirawat').html(Math.round(dirawat/total * 100));
             $('#persen-meninggal').html(Math.round(meninggal/total * 100));
 
             if($("#donutChartCovid").length){
@@ -91,13 +106,13 @@
                 // donut chart data
                 var data1 = {
                     labels: [
-                        "Meninggal", "Positif", "Sembuh"
+                        "Meninggal", "Positif", "Sembuh","Dirawat"
                     ],
                     datasets: [
                         {
-                            data: [meninggal, positif, sembuh],
-                            backgroundColor: [ "#ff000e", "#4867fc", "#4ecc48"],
-                            hoverBackgroundColor: [ "#ef5350", "#4867fc", "#4ecc48"],
+                            data: [meninggal, positif, sembuh,dirawat],
+                            backgroundColor: [ "#ff000e", "#4867fc", "#4ecc48","#fffd59"],
+                            hoverBackgroundColor: [ "#ef5350", "#4867fc", "#4ecc48","#fffd59"],
                             borderWidth: 6,
                             hoverBorderColor: 'transparent'
                         }]
