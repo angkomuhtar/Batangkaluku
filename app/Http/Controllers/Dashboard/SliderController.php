@@ -48,7 +48,9 @@ class SliderController extends DashboardController
         ];
         $breadcrumbs = $this->breadcrumbs;
         $title = 'BBPP Batangkaluku - Edit Slider';
-        $data = Slider::find($id);
+        if (!$data = Slider::find($id)){
+            return abort(404,'Not Found');
+        }
         $action = route('dashboard.slider.edit',$id);
         $method = 'post';
         $redirect = route('dashboard.slider');
@@ -100,7 +102,9 @@ class SliderController extends DashboardController
         }
         try {
             DB::beginTransaction();
-            $model = Slider::find($id);
+            if (!$model = Slider::find($id)){
+                return abort(404,'Not Found');
+            }
             $model->update($data);
         } catch (\Exception $exception){
             DB::rollBack();
@@ -115,7 +119,9 @@ class SliderController extends DashboardController
     }
 
     public function delete($id){
-        $model = Slider::find($id);
+        if (!$model = Slider::find($id)){
+            return abort(404,'Not Found');
+        }
         try {
             $model->delete();
         }catch (\Exception $exception){

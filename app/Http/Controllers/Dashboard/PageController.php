@@ -65,7 +65,9 @@ class PageController extends DashboardController
         $data['name'] = $name;
         try {
             DB::beginTransaction();
-            $model = Page::where('name', $name)->first();
+            if (!$model = Page::where('name', $name)->first()){
+                return abort(404,'Not Found');
+            }
             $model->update($data);
         } catch (\Exception $exception) {
             DB::rollBack();
@@ -112,10 +114,12 @@ class PageController extends DashboardController
         ];
         $breadcrumbs = $this->breadcrumbs;
         $title = 'BBPP Batangkaluku - Edit Lampiran ' . $new_name;
-        $data = PageAttachment::whereHas('page', function ($q) use ($type, $name) {
+        if (!$data = PageAttachment::whereHas('page', function ($q) use ($type, $name) {
             $q->where('name', $name);
             $q->where('type', $type);
-        })->find($id);
+        })->find($id)){
+            return abort(404,'Not Found');
+        }
         $action = route('dashboard.page.attachment.edit', ['type' => $type, 'name' => $name, 'id' => $id]);
         $method = 'post';
         $redirect = route('dashboard.page.edit', ['type' => $type, 'name' => $name]);
@@ -166,10 +170,12 @@ class PageController extends DashboardController
         }
         try {
             DB::beginTransaction();
-            $model = PageAttachment::whereHas('page', function ($q) use ($type, $name) {
+            if (!$model = PageAttachment::whereHas('page', function ($q) use ($type, $name) {
                 $q->where('name', $name);
                 $q->where('type', $type);
-            })->find($id);
+            })->find($id)){
+                return abort(404,'Not Found');
+            }
             $model->update($data);
         } catch (\Exception $exception) {
             DB::rollBack();
@@ -185,10 +191,12 @@ class PageController extends DashboardController
 
     public function deleteAttachment($type, $name, $id)
     {
-        $model = PageAttachment::whereHas('page', function ($q) use ($type, $name) {
+        if (!$model = PageAttachment::whereHas('page', function ($q) use ($type, $name) {
             $q->where('name', $name);
             $q->where('type', $type);
-        })->find($id);
+        })->find($id)){
+            return abort(404,'Not Found');
+        }
         try {
             $model->delete();
         } catch (\Exception $exception) {
@@ -230,7 +238,9 @@ class PageController extends DashboardController
         ];
         $breadcrumbs = $this->breadcrumbs;
         $title = 'BBPP Batangkaluku - Edit Pelatihan ';
-        $data = TrainingInfo::find($id);
+        if (!$data = TrainingInfo::find($id)){
+            return abort(404,'Not Found');
+        }
         $action = route('dashboard.page.training.edit', ['type' => $type, 'name' => $name, 'id' => $id]);
         $method = 'post';
         $redirect = route('dashboard.page.edit', ['type' => $type, 'name' => $name]);
@@ -294,7 +304,9 @@ class PageController extends DashboardController
         }
         try {
             DB::beginTransaction();
-            $model = TrainingInfo::find($id);
+            if (!$model = TrainingInfo::find($id)){
+                return abort(404,'Not Found');
+            }
             $model->update($data);
         } catch (\Exception $exception) {
             DB::rollBack();
@@ -310,7 +322,9 @@ class PageController extends DashboardController
 
     public function deleteTraining($type, $name, $id)
     {
-        $model = TrainingInfo::find($id);
+        if (!$model = TrainingInfo::find($id)){
+            return abort(404,'Not Found');
+        }
         try {
             $model->delete();
         } catch (\Exception $exception) {
@@ -352,7 +366,9 @@ class PageController extends DashboardController
         ];
         $breadcrumbs = $this->breadcrumbs;
         $title = 'BBPP Batangkaluku - Edit Pejabat LHKPN / LHKASN ';
-        $data = Officer::find($id);
+        if (!$data = Officer::find($id)){
+            return abort(404,'Not Found');
+        }
         $action = route('dashboard.page.officer.edit', ['type' => $type, 'name' => $name, 'id' => $id]);
         $method = 'post';
         $redirect = route('dashboard.page.edit', ['type' => $type, 'name' => $name]);
@@ -400,7 +416,9 @@ class PageController extends DashboardController
         ]);
         try {
             DB::beginTransaction();
-            $model = Officer::find($id);
+            if (!$model = Officer::find($id)){
+                return abort(404,'Not Found');
+            }
             $model->update($data);
         } catch (\Exception $exception) {
             DB::rollBack();
@@ -416,7 +434,9 @@ class PageController extends DashboardController
 
     public function deleteOfficer($type, $name, $id)
     {
-        $model = Officer::find($id);
+        if (!$model = Officer::find($id)){
+            return abort(404,'Not Found');
+        }
         try {
             $model->delete();
         } catch (\Exception $exception) {

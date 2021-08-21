@@ -44,7 +44,9 @@ class UserController extends DashboardController
             'url' => route('dashboard.user.edit',$id)
         ];
         $breadcrumbs = $this->breadcrumbs;
-        $data = User::where('id','!=',auth()->user()->id)->find($id);
+        if (!$data = User::where('id','!=',auth()->user()->id)->find($id)){
+            return abort(404,'Not Found');
+        }
         $action = route('dashboard.user.edit',$data);
         $method = 'put';
         $redirect = route('dashboard.user');
@@ -82,7 +84,9 @@ class UserController extends DashboardController
             unset($data['password']);
         }
         try {
-            $item = User::where('id','!=',auth()->user()->id)->find($id);
+            if (!$item = User::where('id','!=',auth()->user()->id)->find($id)){
+                return abort(404,'Not Found');
+            }
             $item->update($data);
         } catch (\Exception $exception){
             return response()->json([
@@ -95,7 +99,9 @@ class UserController extends DashboardController
     }
 
     public function delete($id){
-        $data = User::where('id','!=',auth()->user()->id)->find($id);
+        if (!$data = User::where('id','!=',auth()->user()->id)->find($id)){
+            return abort(404,'Not Found');
+        }
         try {
             $data->delete();
         }catch (\Exception $exception){

@@ -50,7 +50,9 @@ class HumanResourcesController extends DashboardController
         ];
         $breadcrumbs = $this->breadcrumbs;
         $title = 'BBPP Batangkaluku - Edit Sumber Daya Manusia';
-        $data = HumanResources::find($id);
+        if (!$data = HumanResources::find($id)){
+            return abort(404,'Not Found');
+        }
         $action = route('dashboard.sdm.edit',$id);
         $method = 'post';
         $redirect = route('dashboard.sdm');
@@ -107,7 +109,9 @@ class HumanResourcesController extends DashboardController
         }
         try {
             DB::beginTransaction();
-            $model = HumanResources::find($id);
+            if (!$model = HumanResources::find($id)){
+                return abort(404,'Not Found');
+            }
             $model->update($data);
         } catch (\Exception $exception){
             DB::rollBack();
@@ -122,7 +126,9 @@ class HumanResourcesController extends DashboardController
     }
 
     public function delete($id){
-        $model = HumanResources::find($id);
+        if (!$model = HumanResources::find($id)){
+            return abort(404,'Not Found');
+        }
         try {
             $model->delete();
         }catch (\Exception $exception){

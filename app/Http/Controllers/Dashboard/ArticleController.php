@@ -60,7 +60,9 @@ class ArticleController extends DashboardController
         ];
         $breadcrumbs = $this->breadcrumbs;
         $title = 'BBPP Batangkaluku - Edit Artikel '.ucwords($type);
-        $data = Article::where('type',$type)->find($id);
+        if (!$data = Article::where('type',$type)->find($id)){
+            return abort(404,'Not Found');
+        }
         $action = route('dashboard.artikel.edit',['type' => $type, 'id' => $id]);
         $method = 'post';
         $redirect = route('dashboard.artikel', $type);
@@ -122,7 +124,9 @@ class ArticleController extends DashboardController
         }
         try {
             DB::beginTransaction();
-            $model = Article::where('type',$type)->find($id);
+            if (!$model = Article::where('type',$type)->find($id)){
+                return abort(404,'Not Found');
+            }
             $model->update($data);
         } catch (\Exception $exception){
             DB::rollBack();
@@ -137,7 +141,9 @@ class ArticleController extends DashboardController
     }
 
     public function delete($type, $id){
-        $model = Article::where('type',$type)->find($id);
+        if (!$model = Article::where('type',$type)->find($id)){
+            return abort(404,'Not Found');
+        }
         try {
             $model->delete();
         }catch (\Exception $exception){

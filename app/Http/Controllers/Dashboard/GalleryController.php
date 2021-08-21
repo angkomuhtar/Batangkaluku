@@ -62,7 +62,9 @@ class GalleryController extends DashboardController
         ];
         $breadcrumbs = $this->breadcrumbs;
         $title = 'BBPP Batangkaluku - Edit Gallery '.ucwords($type);
-        $data = Gallery::where('type',$type)->find($id);
+        if (!$data = Gallery::where('type',$type)->find($id)){
+            return abort(404,'Not Found');
+        }
         $action = route('dashboard.gallery.edit',['type' => $type, 'id' => $id]);
         $method = 'post';
         $redirect = route('dashboard.gallery', $type);
@@ -110,7 +112,9 @@ class GalleryController extends DashboardController
         }
         try {
             DB::beginTransaction();
-            $model = Gallery::where('type',$type)->find($id);
+            if (!$model = Gallery::where('type',$type)->find($id)){
+                return abort(404,'Not Found');
+            }
             $model->update($data);
         } catch (\Exception $exception){
             DB::rollBack();
@@ -125,7 +129,9 @@ class GalleryController extends DashboardController
     }
 
     public function delete($type, $id){
-        $model = Gallery::where('type',$type)->find($id);
+        if (!$model = Gallery::where('type',$type)->find($id)){
+            return abort(404,'Not Found');
+        }
         try {
             $model->delete();
         }catch (\Exception $exception){
