@@ -95,3 +95,12 @@
 .collapsible.open{
     @apply bg-background
 }
+
+
+.pelayanan{
+    @apply w-1/2 md:w-1/3 lg:w-1/5 flex justify-center items-center rounded-md border border-border justify-items-center
+}
+
+.pelayanan-content{
+    @apply flex flex-col justify-center items-center space-y-4 py-10 text-center
+}
