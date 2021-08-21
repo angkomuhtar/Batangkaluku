@@ -27,7 +27,17 @@
             <li class="capitalize hover:text-secondary active:text-secondary"><a href="{{url('satker/spi')}}"> {{__('general.unit_work')}}</a></li>
             <li class="capitalize hover:text-secondary active:text-secondary"><a href="{{url('galeri/photo')}}"> {{__('general.gallery')}}</a></li>
         </ul>
-        <a href="" class="btn-sm-secondary hover:text-white hover:bg-secondary" >{{__('general.contact')}}</a>
+        <div>
+            <a href="{{url()->current()}}?lang={{$lang == 'en' ? 'id' : 'en'}}" class="btn-white" style="margin-right: 5px">
+                @if ($lang == 'en')
+                    IND
+                @else
+                    ENG
+                @endif
+            </a>
+            <a href="" class="btn-sm-secondary hover:text-white hover:bg-secondary" >{{__('general.contact')}}</a>
+        </div>
     </nav>
+
 
 </header>
