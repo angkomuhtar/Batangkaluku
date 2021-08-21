@@ -46,4 +46,9 @@ class Article extends Model
     protected $dates = [
         'published_time'
     ];
+
+    public function getDescStrAttribute(){
+        $lang = request()->query('lang','id');
+        return substr(strip_tags($lang == 'en' ? ($this->description_en ?? $this->description) : $this->description),0,110);
+    }
 }

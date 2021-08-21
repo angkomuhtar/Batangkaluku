@@ -69,7 +69,7 @@
 @push('addon-script')
     <script>
         $(document).ready(function (){
-            $.get('{{route('dashboard.ajax.covid')}}')
+            $.get('{{route('ajax.covid')}}')
                 .then(function (res){
                     res.positif = parseInt(res.positif.replace(/,/g,""))
                     res.sembuh = parseInt(res.sembuh.replace(/,/g,""))
@@ -88,11 +88,11 @@
             var meninggal = parseInt(res.meninggal);
             var dirawat = parseInt(res.dirawat);
             var total = positif+sembuh+meninggal+dirawat;
-            $('#total-kasus').html(total.toLocaleString());
-            $('#jumlah-positif').html(positif.toLocaleString());
-            $('#jumlah-sembuh').html(sembuh.toLocaleString());
-            $('#jumlah-meninggal').html(meninggal.toLocaleString());
-            $('#jumlah-dirawat').html(dirawat.toLocaleString());
+            $('#total-kasus').html(total.toLocaleString('id-ID'));
+            $('#jumlah-positif').html(positif.toLocaleString('id-ID'));
+            $('#jumlah-sembuh').html(sembuh.toLocaleString('id-ID'));
+            $('#jumlah-meninggal').html(meninggal.toLocaleString('id-ID'));
+            $('#jumlah-dirawat').html(dirawat.toLocaleString('id-ID'));
 
             $('#persen-positif').html(Math.round(positif/total * 100));
             $('#persen-sembuh').html(Math.round(sembuh/total * 100));

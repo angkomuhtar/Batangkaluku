@@ -4,12 +4,11 @@
         <section class="container">
             <div class="swiper-container mySwiper">
                 <div class="swiper-wrapper">
+                    @foreach ($slider AS $row)
                     <div class="swiper-slide">
-                        <img src="https://source.unsplash.com/1204x480/?farm" alt="">
+                        <img src="{{asset('storage/'.$row->image)}}" alt="">
                     </div>
-                    <div class="swiper-slide">
-                        <img src="https://source.unsplash.com/1204x480/?farm,view" alt="">
-                    </div>
+                    @endforeach
                 </div>
                 <div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets">
                 </div>
@@ -20,7 +19,7 @@
             <h2 class="header-title">
                 Update Covid-19 Indonesia
             </h2>
-            <p class="header-subtitle">Pembaruan terakhir 2021-06-21 03:07:15</p>
+            <p class="header-subtitle">{{__('general.last_update')}} {{now()->format('Y-m-d H:i:s')}}</p>
             <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
                 <div class="py-10 items-center rounded-lg flex flex-col justify-center bg-opacity-20 bg-confirmed">
                     <div class="p-3 rounded-xl bg-opacity-30 mb-5 bg-confirmed">
@@ -29,8 +28,8 @@
                         <path stroke="#32A7E2" stroke-width="3" d="M15.313 9.375a6.563 6.563 0 00-6.556 6.25"/>
                         </svg>
                     </div>
-                    <p class="text-confirmed text-2xl font-bold mb-2">145.466</p>
-                    <p class="text-confirmed text-xl font-semibold">Terkonfirmasi</p>
+                    <p class="text-confirmed text-2xl font-bold mb-2" id="jumlah-positif">0</p>
+                    <p class="text-confirmed text-xl font-semibold">{{__('general.confirmed')}}</p>
                 </div>
                 <div class="py-10 items-center rounded-lg flex flex-col justify-center bg-opacity-20 bg-injury">
                     <div class="p-3 rounded-xl bg-opacity-30 mb-5 bg-injury">
@@ -38,8 +37,8 @@
                         <path fill="#FF8700" fill-rule="evenodd" d="M13.23 2.875c-5.914 0-10.697 4.732-10.968 10.622V13.515c-.008.17-.012.34-.012.51l3 .035.01-.441c.208-4.336 3.72-7.744 7.97-7.744 2.223 0 4.237.928 5.69 2.437L20 9.435l1.08-1.123a7.87 7.87 0 015.69-2.437c4.25 0 7.762 3.408 7.97 7.744l.01.441 3-.069-.011-.46v-.017l-.001-.017c-.271-5.89-5.054-10.622-10.967-10.622A10.83 10.83 0 0020 5.247a10.83 10.83 0 00-6.77-2.372zM4.622 24.267c1.973 3.964 4.897 6.955 7.705 9.047 2.79 2.078 5.556 3.336 7.315 3.768l.357.087.357-.087c1.76-.432 4.526-1.69 7.315-3.768 2.808-2.092 5.732-5.083 7.705-9.047L32.69 22.93c-1.716 3.448-4.287 6.097-6.812 7.978-2.324 1.732-4.533 2.757-5.879 3.162-1.346-.405-3.555-1.43-5.88-3.162-2.524-1.881-5.095-4.53-6.811-7.978l-2.686 1.337zM15.237 11.68a1.5 1.5 0 00-2.808-.515l-3.325 6.181H3.75a1.5 1.5 0 000 3H10a1.5 1.5 0 001.321-.79l1.548-2.877.956 7.268a1.5 1.5 0 002.812.507l2.604-4.904.013-.024.887 2.638a1.5 1.5 0 002.824.055l2.015-5.298.905 2.445a1.5 1.5 0 001.407.98h8.958a1.5 1.5 0 000-3h-7.914l-1.93-5.216a1.5 1.5 0 00-2.808-.013l-1.948 5.122-.75-2.227a1.5 1.5 0 00-2.78-.155l-1.547 3.32-.385.727-.95-7.224z" clip-rule="evenodd"/>
                         </svg>
                     </div>
-                    <p class="text-injury text-2xl font-bold mb-2">145.466</p>
-                    <p class="text-injury text-xl font-semibold">Dirawat</p>
+                    <p class="text-injury text-2xl font-bold mb-2" id="jumlah-dirawat">0</p>
+                    <p class="text-injury text-xl font-semibold">{{__('general.treated')}}</p>
                 </div>
                 <div class="py-10 items-center rounded-lg flex flex-col justify-center bg-opacity-20 bg-heal">
                     <div class="p-3 rounded-xl bg-opacity-30 mb-5 bg-heal">
@@ -53,8 +52,8 @@
                             </defs>
                           </svg>
                     </div>
-                    <p class="text-heal text-2xl font-bold mb-2">145.466</p>
-                    <p class="text-heal text-xl font-semibold">Sembuh</p>
+                    <p class="text-heal text-2xl font-bold mb-2" id="jumlah-sembuh">0</p>
+                    <p class="text-heal text-xl font-semibold">{{__('general.healed')}}</p>
                 </div>
                 <div class="py-10 items-center rounded-lg flex flex-col justify-center bg-opacity-20 bg-death">
                     <div class="p-3 rounded-xl bg-opacity-30 mb-5 bg-death">
@@ -63,37 +62,37 @@
                             <path fill="#E74C3C" fill-rule="evenodd" d="M4.375 17.5C4.375 8.87 11.371 1.875 20 1.875c8.63 0 15.625 6.996 15.625 15.625 0 4.242-1.692 8.09-4.434 10.905-.172 2.315-.465 4.779-1.972 6.635-1.677 2.066-4.563 3.085-9.219 3.085s-7.542-1.019-9.219-3.085c-1.507-1.856-1.8-4.32-1.972-6.635A15.578 15.578 0 014.375 17.5zM20 4.375c-7.249 0-13.125 5.876-13.125 13.125 0 3.71 1.538 7.06 4.016 9.45l.346.333.033.48c.18 2.593.421 4.432 1.452 5.702.554.682 1.427 1.294 2.903 1.691v-4.531h2.5v4.932c.57.044 1.192.068 1.875.068s1.306-.024 1.875-.068v-4.932h2.5v4.531c1.476-.397 2.349-1.008 2.903-1.691 1.03-1.27 1.271-3.109 1.452-5.703l.033-.48.346-.333a13.083 13.083 0 004.016-9.449c0-7.249-5.876-13.125-13.125-13.125z" clip-rule="evenodd"/>
                           </svg>
                     </div>
-                    <p class="text-death text-2xl font-bold mb-2">1.711.565</p>
-                    <p class="text-death text-xl font-semibold">Meninggal</p>
+                    <p class="text-death text-2xl font-bold mb-2" id="jumlah-meninggal">0</p>
+                    <p class="text-death text-xl font-semibold">{{__('general.death')}}</p>
                 </div>
             </div>
         </section>
-        
+
         <!-- News Update -->
         <section class="container">
             <h2 class="header-title">
-                Berita Terbaru
+                {{__('general.latest_news')}}
             </h2>
-            <p class="header-subtitle">Berikut berita terkait BBPP Batangkaluku yang dapat Anda akses</p>
+            <p class="header-subtitle">{{__('general.latest_news_desc')}}</p>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                @for($i=1; $i <= 6; $i++)
+                @foreach ($news AS $row)
                 <div class="rounded-sm">
-                    <img class="rounded-sm w-full h-auto" src="https://images.unsplash.com/photo-1589923188900-85dae523342b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80" alt="">
-                    <p class="text-secondary font-semibold text-xs mt-5 mb-1">Artikel Umum</p>
-                    <h3 class="font-semibold text-xl mb-3">Harapan Mentan SYL Kepada Ribuan Penyuluh Pertanian</h3>
-                    <p class="mb-3 font-normal text-sm text-darkGrey">RURAL Empowerment and Agricultural Development Scaling-up Initiative atau REA...</p>
-                    <p class="mb-3 font-normal text-xs text-darkLight">06 April 2021</p>
+                    <img class="rounded-sm w-full h-auto" src="{{asset('storage/'.$row->image)}}" alt="{{$row->title}}">
+                    <p class="text-secondary font-semibold text-xs mt-5 mb-1">{{__('general.artikel_'.$row->type)}}</p>
+                    <h3 class="font-semibold text-xl mb-3">{{$lang == 'en' ? ($row->title_en ?? $row->title) : $row->title }}</h3>
+                    <p class="mb-3 font-normal text-sm text-darkGrey">{{$row->desc_str}}...</p>
+                    <p class="mb-3 font-normal text-xs text-darkLight"  >{{tanggal($row->published_time)}}</p>
                 </div>
-                @endfor
+                @endforeach
             </div>
         </section>
-    
+
         <!-- Zona Integrasi -->
         <section class="container px-20">
             <h2 class="header-title">
-                Zona Integrasi
+                {{__('general.integration_zone')}}
             </h2>
-            <p class="header-subtitle">Menolak Suap, Pungli dan Gratifikasi</p>
+            <p class="header-subtitle">{{__('general.i_zone_desc')}}</p>
             <div class="grid lg:grid-cols-2 gap-10">
                 <div class="space-y-5 items-center flex flex-col justify-center order-last lg:order-none">
                     <div class="flex justify-between items-center p-4 border rounded-md w-full">
@@ -136,51 +135,51 @@
                         </div>
                         <span class="material-icons-outlined">chevron_right</span>
                     </div>
-    
+
                 </div>
                 <div class="items-center">
                     <img src="{{asset('assets/img/integrasi/integrasi.png')}}" alt="" srcset="">
                 </div>
             </div>
         </section>
-    
+
         <!-- Artikel Pertanian -->
         <section class="container">
             <h2 class="header-title">
-                Artikel Pertanian
+                {{__('general.artikel_pertanian')}}
             </h2>
-            <p class="header-subtitle">Baca artikel tentang pertanian disini</p>
+            <p class="header-subtitle">{{__('general.artikel_pertanian_desc')}}</p>
             <div class="grid lg:grid-cols-2 gap-6">
-                @for($i=1; $i <= 4; $i++)
+                @foreach ($news_pertanian AS $row)
                 <div class="rounded-sm grid grid-cols-3 gap-5">
-                    <img class="rounded-sm w-full h-auto" src="https://images.unsplash.com/photo-1589923188900-85dae523342b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80" alt="">
+                    <img class="rounded-sm w-full h-auto" src="{{asset('storage/'.$row->image)}}" alt="">
                     <div class="col-span-2 flex flex-col justify-between">
-                        <h3 class="font-semibold text-xl col-span-2">Pengolahan Buah Naga untuk Cemilan Keluarga</h3>
-                        <p class="font-normal text-sm text-darkGrey col-span-2">RURAL Empowerment and Agricultural Development Scaling-up Initiative atau REA...</p>
-                        <a class="text-secondary font-semibold text-xs">Artikel Umum</a>
+                        <h3 class="font-semibold text-xl col-span-2">{{$lang == 'en' ? ($row->title_en ?? $row->title) : $row->title}}</h3>
+                        <p class="font-normal text-sm text-darkGrey col-span-2">{{$row->desc_str}}...</p>
+                        <a class="text-secondary font-semibold text-xs">{{__('general.artikel_'.$row->type)}}</a>
                     </div>
                 </div>
-                @endfor
+                @endforeach
             </div>
         </section>
 
         <section class="container">
             <h2 class="header-title">
-                Info dklat
+                {{__('general.edu_info')}}
             </h2>
             <div class="swiper-container diklat">
                 <div class="swiper-wrapper">
-                @for($i=1; $i <= 6; $i++)
+                @foreach($news_pelatihan AS $row)
                 <div class="swiper-slide">
                     <div class="rounded-sm">
-                        <img class="rounded-sm w-full h-auto" src="https://images.unsplash.com/photo-1589923188900-85dae523342b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80" alt="">
-                        <p class="text-secondary font-semibold text-xs mt-5 mb-1">Artikel Umum</p>
-                        <h3 class="font-semibold text-xl mb-3">Harapan Mentan SYL Kepada Ribuan Penyuluh Pertanian</h3>
-                        <p class="mb-3 font-normal text-sm text-darkGrey">RURAL Empowerment and Agricultural Development Scaling-up Initiative atau REA...</p>
-                        <p class="mb-3 font-normal text-xs text-darkLight">06 April 2021</p>
+                        <img class="rounded-sm w-full h-auto" src="{{asset('storage/'.$row->image)}}" alt="">
+                        <p class="text-secondary font-semibold text-xs mt-5 mb-1">{{__('general.artikel_'.$row->type)}}</p>
+                        <h3 class="font-semibold text-xl mb-3">{{$lang == 'en' ? ($row->title_en ?? $row->title) : $row->title}}</h3>
+                        <p class="mb-3 font-normal text-sm text-darkGrey">{{$row->desc_str}}...</p>
+                        <p class="mb-3 font-normal text-xs text-darkLight">{{tanggal($row->published_time)}}</p>
                     </div>
                 </div>
-                @endfor
+                @endforeach
 
             </div>
             <div class="swiper-pagination"></div>
@@ -189,7 +188,7 @@
 
         <section class="container">
             <h2 class="header-title">
-                Info Cuaca & Iklim
+                {{__('general.weather_info')}}
             </h2>
             <div class="flex justify-center space-x-4">
                 <div class="bg-secondary opacity-75 rounded-lg text-white px-7 py-6 space-y-2">
@@ -202,22 +201,22 @@
                     <div class="flex jusify-center gap-6 items-center">
                         <div>
                             <h2 class="text-2xl font-bold city"></h2>
-                            <h2 class="text-2xl font-bold suhu"> 25 C</h2>
+                            <h2 class="text-2xl font-bold suhu"> 0 C</h2>
                             <img class="" src="https://openweathermap.org/img/wn/02n@2x.png" alt="">
                         </div>
                         <div>
                             <h2 class="font-semibold text-md desc"></h2>
-                            <h2 class="font-semibold text-md kelembapan">Kelembapan : <span>6</span> %</h2>
-                            <h2 class="font-semibold text-md angin">Kecepatan Angin : <span>6</span> Km/jam</h2>
+                            <h2 class="font-semibold text-md kelembapan">Kelembapan : <span>0</span> %</h2>
+                            <h2 class="font-semibold text-md angin">Kecepatan Angin : <span>0</span> Km/jam</h2>
                         </div>
                     </div>
                 </div>
             </div>
-            
+
         </section>
         <section class="container">
             <h2 class="header-title">
-                E-Pelayanan BBPP Batangkaluku
+                {{__('general.e_service')}} BBPP Batangkaluku
             </h2>
             <div class="flex justify-center gap-6 flex-wrap" >
                 <div class="pelayanan">
@@ -266,9 +265,9 @@
                     </div>
                 </div>
 
-                
+
             </div>
-            
+
         </section>
 @endsection
 
@@ -281,7 +280,7 @@
             fetch(
                 "https://api.openweathermap.org/data/2.5/weather?q="
                 +city
-                +"&units=metric&lang=id&appid="
+                +"&units=metric&lang={{$lang}}&appid="
                 +this.apikey
             )
             .then((response) => response.json())
@@ -309,7 +308,7 @@
             }
         })
     })
-    
+
     var swiper = new Swiper(".mySwiper", {
         slidesPerView: 1,
         spaceBetween: 0,
@@ -351,5 +350,31 @@
           },
         },
       });
+    $(document).ready(function (){
+        $.get('{{route('ajax.covid')}}')
+            .then(function (res){
+                res.positif = parseInt(res.positif.replace(/,/g,""))
+                res.sembuh = parseInt(res.sembuh.replace(/,/g,""))
+                res.meninggal = parseInt(res.meninggal.replace(/,/g,""))
+                res.dirawat = parseInt(res.dirawat.replace(/,/g,""))
+                localStorage.setItem('covid',res);
+                showCovid(res)
+            },function (){
+                var covid = localStorage.getItem('covid');
+                showCovid(covid)
+            })
+    })
+    function showCovid(res){
+        var positif = parseInt(res.positif);
+        var sembuh = parseInt(res.sembuh);
+        var meninggal = parseInt(res.meninggal);
+        var dirawat = parseInt(res.dirawat);
+        var total = positif+sembuh+meninggal+dirawat;
+        $('#total-kasus').html(total.toLocaleString('id-ID'));
+        $('#jumlah-positif').html(positif.toLocaleString('id-ID'));
+        $('#jumlah-sembuh').html(sembuh.toLocaleString('id-ID'));
+        $('#jumlah-meninggal').html(meninggal.toLocaleString('id-ID'));
+        $('#jumlah-dirawat').html(dirawat.toLocaleString('id-ID'));
+    }
 </script>
 @endpush
