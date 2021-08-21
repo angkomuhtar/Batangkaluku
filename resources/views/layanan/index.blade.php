@@ -5,7 +5,7 @@
         <div class="w-full rounded-md relative">
             <img src="{{asset('assets/img/banner.png')}}" class="w-full">
             <div class="absolute top-0 bottom-0 left-12 flex flex-col justify-center">
-                <h3 class="text-white text-header-1 pb-3">{{__('general.ser_n_info')}}</h3>
+                <h3 class="text-white text-header-1 pb-3">{{__('general.serv_n_info')}}</h3>
                 <h6 class="text-header-3 text-white">BBPP Batangkaluku</h6>
             </div>
         </div>
@@ -28,7 +28,7 @@
                 </h3>
                 @foreach ($data->pageAttachments AS $row)
                     <a href="{{asset('storage/'.$row->attachment)}}" download style="font-size: larger">
-                        <div class="border shadow pull-right" style="padding: 5px; border-radius: 5px; margin-bottom: 5px">
+                        <div class="rounded-sm shadow" style="padding: 5px; border-radius: 5px; margin-bottom: 5px">
                             {{$lang == 'en' ? ($row->name_en ?? $row->name) : $row->name}}<br>
                             <span style="font-size: x-small">{{tanggal($row->created_at)}}</span>
                         </div>

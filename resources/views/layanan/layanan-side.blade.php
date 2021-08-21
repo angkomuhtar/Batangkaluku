@@ -1,7 +1,7 @@
 <div class="rounded-sm border border-border py-4 px-2 w-full lg:w-auto">
     <div class="border-b border-border">
         <h3 class="text-title text-dark mb-4">
-            {{__('general.ser_n_info')}}
+            {{__('general.serv_n_info')}}
         </h3>
     </div>
     <ul class="py-3 space-y-1">

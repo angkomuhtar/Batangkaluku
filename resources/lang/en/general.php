@@ -34,7 +34,7 @@ return [
     'institution' => 'Institution',
     'news' => 'News',
     'service' => 'Service',
-    'ser_n_info' => 'Service and Information',
+    'serv_n_info' => 'Service and Information',
     'unit_work' => 'Unit Work',
     'gallery' => 'Gallery',
     'ministry' => 'Ministry of Agriculture',
@@ -45,4 +45,7 @@ return [
     'album_video' => 'Video Album',
     'download_doc' => 'Download Document',
     'finish' => 'Finish',
+    'officer_name' => 'Officer Name',
+    'rank_class' => 'Rank / Class',
+    'position' => 'Position'
 ];

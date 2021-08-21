@@ -34,7 +34,7 @@ return [
     'institution' => 'Lembaga',
     'news' => 'Artikel Berita',
     'service' => 'Layanan',
-    'ser_n_info' => 'Layanan dan Informasi',
+    'serv_n_info' => 'Layanan dan Informasi',
     'unit_work' => 'Satuan Kerja',
     'gallery' => 'Galeri',
     'ministry' => 'Kementerian Pertanian',
@@ -45,4 +45,7 @@ return [
     'album_video' => 'Album Video',
     'download_doc' => 'Unduh Dokumen',
     'finish' => 'Selesai',
+    'officer_name' => 'Nama Pejabat',
+    'rank_class' => 'Pangkat / Golongan',
+    'position' => 'Jabatan'
 ];

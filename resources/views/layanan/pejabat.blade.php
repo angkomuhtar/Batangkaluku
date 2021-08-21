@@ -27,22 +27,31 @@
                     {{__('general.download_doc')}} :
                 </h3>
             @endif
-            <div class="lg:col-span-3 grid grid-cols-1 lg:grid-cols-3 gap-6">
-                @foreach($training AS $row)
+            <div class="lg:col-span-3 grid grid-cols-1 lg:grid-cols-1 gap-6">
                     <div class="rounded-sm">
-                        <img class="rounded-sm w-full h-auto" src="{{asset('storage/'.$row->image)}}" alt="{{$row->title}}">
-                        <h3 class="font-semibold text-xl mb-3">{{$lang == 'en' ? ($row->title_en ?? $row->title) : $row->title }}</h3>
-                        <p class="mb-3 font-normal text-sm text-darkGrey">{{tanggal($row->date,true)}}</p>
-                        <p class="mb-3 font-normal text-sm text-darkGrey">{{$row->time_start}} - {{$row->time_end ?? __('general.finish')}}</p>
-                        <p class="mb-3 font-normal text-sm text-darkGrey">{{$row->location}}</p>
+                       <table>
+                           <thead>
+                           <tr>
+                               <td>No.</td>
+                               <td>{{__('general.officer_name')}}</td>
+                               <td>NIP</td>
+                               <td>{{__('general.rank_class')}}</td>
+                               <td>{{__('general.position')}}</td>
+                           </tr>
+                           </thead>
+                           <tbody>
+                           @foreach ($pejabat AS $row)
+                               <tr>
+                                   <td>{{$loop->iteration}}</td>
+                                   <td>{{$row->name}}</td>
+                                   <td>{{$row->nip}}</td>
+                                   <td>{{$lang == 'en' ? $row->rank_en ?? $row->rank : $row->rank}}</td>
+                                   <td>{{$lang == 'en' ? $row->position_en ?? $row->position : $row->position}}</td>
+                               </tr>
+                           @endforeach
+                           </tbody>
+                       </table>
                     </div>
-                @endforeach
-                <div class="lg:col-span-2 flex justify-center">
-                    {{$training->links()}}
-                    {{--                <button class="bg-secondary text-white p-3 rounded-md">--}}
-                    {{--                    Tampilkan Lebih Banyak Berita--}}
-                    {{--                </button>--}}
-                </div>
             </div>
         </div>
     </section>
