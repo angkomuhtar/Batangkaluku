@@ -34,6 +34,7 @@ return [
     'institution' => 'Institution',
     'news' => 'News',
     'service' => 'Service',
+    'ser_n_info' => 'Service and Information',
     'unit_work' => 'Unit Work',
     'gallery' => 'Gallery',
     'ministry' => 'Ministry of Agriculture',
@@ -41,5 +42,7 @@ return [
     'org_structure' => 'Organizational Structure',
     'human_resources' => 'Human Resources',
     'album_photo' => 'Photo Album',
-    'album_video' => 'Video Album'
+    'album_video' => 'Video Album',
+    'download_doc' => 'Download Document',
+    'finish' => 'Finish',
 ];

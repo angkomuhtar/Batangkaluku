@@ -14,6 +14,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LembagaController;
 use App\Http\Controllers\GaleriController;
 use App\Http\Controllers\ArtikelController;
+use App\Http\Controllers\LayananController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -43,16 +44,8 @@ Route::group([''], function () {
         Route::get('{id}-{title}',[ArtikelController::class,'detail'])->name('artikel.detail');
     });
 
-    Route::group(['prefix' => 'layanan'], function () {
-        Route::get('pelatihan', function () {
-            return view('artikel.pelatihan');
-        });
-        Route::get('pertanian', function () {
-            return view('artikel.pertanian');
-        });
-        Route::get('umum', function () {
-            return view('artikel.umum');
-        });
+    Route::group(['prefix' => 'layanan/{service}'], function () {
+        Route::get('',[LayananController::class,'index'])->name('layanan');
     });
 
 

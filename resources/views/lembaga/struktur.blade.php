@@ -16,9 +16,10 @@
             @include('lembaga.lembaga-side')
         </div>
         <div class="lg:col-span-3 space-y-10">
-            {!! $lang == 'en' ? ($data->content_en ?? $data->content) : $data->content !!}
+            <div class="space-y-3">
+                {!! $lang == 'en' ? ($data->content_en ?? $data->content) : $data->content !!}
+            </div>
         </div>
-
     </section>
 @endsection
 

@@ -34,6 +34,7 @@ return [
     'institution' => 'Lembaga',
     'news' => 'Artikel Berita',
     'service' => 'Layanan',
+    'ser_n_info' => 'Layanan dan Informasi',
     'unit_work' => 'Satuan Kerja',
     'gallery' => 'Galeri',
     'ministry' => 'Kementerian Pertanian',
@@ -41,5 +42,7 @@ return [
     'org_structure' => 'Struktur Organisasi',
     'human_resources' => 'Sumber Daya Manusia',
     'album_photo' => 'Album Foto',
-    'album_video' => 'Album Video'
+    'album_video' => 'Album Video',
+    'download_doc' => 'Unduh Dokumen',
+    'finish' => 'Selesai',
 ];

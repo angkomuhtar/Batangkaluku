@@ -39,6 +39,9 @@ if (!function_exists('tanggal')){
             }
             return null;
         }
+        if ($cetak_hari){
+            return date('l, d F Y ');
+        }
         return date('d F Y ');
     }
 
