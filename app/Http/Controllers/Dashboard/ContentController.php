@@ -43,13 +43,15 @@ class ContentController extends DashboardController
         $data['name'] = $type;
         try {
             DB::beginTransaction();
-            $model = Content::where('name',$type)->first();
+            if (!$model = Content::where('name',$type)->first()){
+                return abort(404,'Not Found');
+            }
             $model->update($data);
         } catch (\Exception $exception){
             DB::rollBack();
             return response()->json([
                 'message' => $exception->getMessage()
-            ]);
+            ],500);
         }
         DB::commit();
         return response()->json([

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Dashboard\ArticleController;
+use App\Http\Controllers\Dashboard\AuthController;
 use App\Http\Controllers\Dashboard\ContentController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\DepartmentController;
@@ -8,8 +9,13 @@ use App\Http\Controllers\Dashboard\GalleryController;
 use App\Http\Controllers\Dashboard\HumanResourcesController;
 use App\Http\Controllers\Dashboard\PageController;
 use App\Http\Controllers\Dashboard\SliderController;
-use App\Http\Controllers\Dashboard\AuthController;
 use App\Http\Controllers\Dashboard\UserController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LembagaController;
+use App\Http\Controllers\GaleriController;
+use App\Http\Controllers\ArtikelController;
+use App\Http\Controllers\LayananController;
+use App\Http\Controllers\SatuanKerjaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,91 +28,60 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::group([''], function () {
+    $locale = request()->query('lang', 'id');
+    app()->setLocale($locale);
+    Route::get('', [HomeController::class, 'index'])->name('home');
 
-Route::get('/', function () {
-    return view('home');
-});
+    Route::group(['prefix' => 'lembaga'], function () use ($locale) {
+        Route::get('',function () use ($locale){
+            return redirect()->route('lembaga.tentang',['lang' => $locale]);
+        });
+        Route::get('tentang', [LembagaController::class, 'tentang'])->name('lembaga.tentang');
+        Route::get('struktur', [LembagaController::class, 'struktur'])->name('lembaga.struktur');
+        Route::get('sdm', [LembagaController::class, 'sdm'])->name('lembaga.sdm');
+    });
+    Route::get('artikel',function () use ($locale){
+        return redirect()->route('artikel',['lang' => $locale,'type' => 'pelatihan']);
+    });
+    Route::group(['prefix' => 'artikel/{type}'], function () {
+        Route::get('',[ArtikelController::class,'index'])->name('artikel');
+        Route::get('{id}-{title}',[ArtikelController::class,'detail'])->name('artikel.detail');
+    });
+    Route::get('layanan',function () use ($locale){
+        return redirect()->route('layanan',['lang' => $locale,'service' => 'sop_balai']);
+    });
+    Route::group(['prefix' => 'layanan/{service}'], function () {
+        Route::get('',[LayananController::class,'index'])->name('layanan');
+    });
+    Route::get('satker',function () use ($locale){
+        return redirect()->route('satker',['lang' => $locale,'service' => 'sistem_pengendalian_intern']);
+    });
+    Route::group(['prefix' => 'satker/{service}'], function () {
+        Route::get('',[SatuanKerjaController::class,'index'])->name('satker');
+    });
 
-Route::group(['prefix' => 'lembaga'], function(){
-    Route::get('tentang',function(){
-        return view('lembaga.tentang');
-    });
-    Route::get('struktur',function(){
-        return view('lembaga.struktur');
-    });
-    Route::get('sdm',function(){
-        return view('lembaga.sdm');
-    });
-});
-
-
-Route::group(['prefix' => 'artikel'], function(){
-    Route::get('pelatihan',function(){
-        return view('artikel.pelatihan');
-    });
-    Route::get('pertanian',function(){
-        return view('artikel.pertanian');
-    });
-    Route::get('umum',function(){
-        return view('artikel.umum');
-    });
-});
-
-Route::group(['prefix' => 'layanan'], function(){
-    Route::get('pelatihan',function(){
-        return view('artikel.pelatihan');
-    });
-    Route::get('pertanian',function(){
-        return view('artikel.pertanian');
-    });
-    Route::get('umum',function(){
-        return view('artikel.umum');
-    });
-});
-
-
-Route::group(['prefix' => 'satker'], function(){
-    Route::get('spi',function(){
-        return view('satker.spi');
-    });
-    Route::get('wbk',function(){
-        return view('satker.wbk');
-    });
-    Route::get('ppid',function(){
-        return view('satker.ppid');
-    });
-    Route::get('pengadaan',function(){
-        return view('satker.pengadaan');
-    });
-    Route::get('perpustakaan',function(){
-        return view('satker.perpustakaan');
-    });
-    Route::get('iso',function(){
-        return view('satker.iso');
-    });
-});
-
-Route::group(['prefix' => 'galeri'], function(){
-    Route::get('photo',function(){
-        return view('galeri.photo');
-    });
-    Route::get('video',function(){
-        return view('galeri.video');
+    Route::group(['prefix' => 'galeri'], function () use ($locale) {
+        Route::get('',function () use ($locale){
+           return redirect()->route('gallery.photo',['lang' => $locale]);
+        });
+        Route::get('photo',[GaleriController::class,'photo'])->name('gallery.photo');
+        Route::get('video',[GaleriController::class,'video'])->name('gallery.video');
     });
 });
 
 Route::group(['prefix' => 'dashboard'], function () {
-    Route::get('',function (){
+    Route::get('', function () {
         return redirect()->route('dashboard');
     });
-    Route::group(['middleware' => 'guest'],function(){
-        Route::get('login',[AuthController::class,'index'])->name('login');
-        Route::post('login',[AuthController::class,'login']);
+    Route::group(['middleware' => 'guest'], function () {
+        Route::get('login', [AuthController::class, 'index'])->name('login');
+        Route::post('login', [AuthController::class, 'login']);
     });
     Route::group(['middleware' => 'auth'], function () {
-        Route::get('profile',[AuthController::class,'profile'])->name('dashboard.profile');
-        Route::post('profile',[AuthController::class,'postProfile']);
-        Route::post('logout',[AuthController::class,'logout'])->name('logout');
+        Route::get('profile', [AuthController::class, 'profile'])->name('dashboard.profile');
+        Route::post('profile', [AuthController::class, 'postProfile']);
+        Route::post('logout', [AuthController::class, 'logout'])->name('logout');
         Route::get('summary', [DashboardController::class, 'dashboard'])->name('dashboard');
         Route::group(['prefix' => 'slider'], function () {
             Route::get('', [SliderController::class, 'index'])->name('dashboard.slider');
@@ -185,8 +160,10 @@ Route::group(['prefix' => 'dashboard'], function () {
                 Route::delete('{id}', [PageController::class, 'deleteOfficer']);
             });
         });
-        Route::group(['prefix' => 'ajax'],function (){
-            Route::get('covid',[DashboardController::class,'getDataCovid'])->name('dashboard.ajax.covid');
-        });
+
     });
 });
+Route::group(['prefix' => 'ajax'], function () {
+    Route::get('covid', [DashboardController::class, 'getDataCovid'])->name('ajax.covid');
+});
+

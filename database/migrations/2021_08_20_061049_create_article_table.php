@@ -17,11 +17,11 @@ class CreateArticleTable extends Migration
             $table->id();
             $table->string('image');
             $table->string('title');
-            $table->string('description');
-            $table->string('content');
+            $table->text('description');
+            $table->text('content');
             $table->string('title_en')->nullable();
-            $table->string('description_en')->nullable();
-            $table->string('content_en')->nullable();
+            $table->text('description_en')->nullable();
+            $table->text('content_en')->nullable();
             $table->string('type');
             $table->string('source')->nullable();
             $table->string('creator')->nullable();

@@ -46,7 +46,7 @@ class Page extends Model
      */
     public function pageAttachments()
     {
-        return $this->hasMany('App\Models\PageAttachment');
+        return $this->hasMany('App\Models\PageAttachment')->where('is_active',1);
     }
 
     public function getNameStrAttribute(){

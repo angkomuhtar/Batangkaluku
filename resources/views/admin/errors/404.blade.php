@@ -1,4 +1,4 @@
-@extends('app')
+@extends('admin.app')
 @section('meta-title','404');
 @section('content')
     <div class="big-error-w">

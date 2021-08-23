@@ -29,6 +29,13 @@
         START - Mobile Menu List
         -------------------->
         <ul class="main-menu">
+            <li class="">
+                <a href="{{url('')}}" target="_blank">
+                    <div class="icon-w">
+                        <div class="fa fa-globe"></div>
+                    </div>
+                    <span>Website</span></a>
+            </li>
             <li class="{{str_contains(url()->current(),'summary') ? 'active' : ''}}">
                 <a href="{{route('dashboard')}}">
                     <div class="icon-w">
@@ -83,14 +90,14 @@
             <li class="{{str_contains(url()->current(),'artikel/pelatihan') ? 'active' : ''}}">
                 <a href="{{route('dashboard.artikel','pelatihan')}}">
                     <div class="icon-w">
-                        <div class="os-icon os-icon-newspaper"></div>
+                        <div class="fa fa-newspaper-o"></div>
                     </div>
                     <span>Artikel Pelatihan</span></a>
             </li>
             <li class="{{str_contains(url()->current(),'artikel/pertanian') ? 'active' : ''}}">
                 <a href="{{route('dashboard.artikel','pertanian')}}">
                     <div class="icon-w">
-                        <div class="os-icon os-icon-newspaper"></div>
+                        <div class="fa fa-tree"></div>
                     </div>
                     <span>Artikel Pertanian</span></a>
             </li>
@@ -225,7 +232,7 @@
             <li class="{{str_contains(url()->current(),'gallery/foto') ? 'active' : ''}}">
                 <a href="{{route('dashboard.gallery','foto')}}">
                     <div class="icon-w">
-                        <div class="os-icon os-icon-image"></div>
+                        <div class="fa fa-image"></div>
                     </div>
                     <span>Foto</span></a>
             </li>
@@ -249,7 +256,7 @@
             <li class="{{str_contains(url()->current(),'user') ? 'active' : ''}}">
                 <a href="{{route('dashboard.user')}}">
                     <div class="icon-w">
-                        <div class="os-icon os-icon-user-plus"></div>
+                        <div class="fa fa-user-o"></div>
                     </div>
                     <span>User</span></a>
             </li>

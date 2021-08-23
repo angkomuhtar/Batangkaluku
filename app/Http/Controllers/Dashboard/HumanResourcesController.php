@@ -50,7 +50,9 @@ class HumanResourcesController extends DashboardController
         ];
         $breadcrumbs = $this->breadcrumbs;
         $title = 'BBPP Batangkaluku - Edit Sumber Daya Manusia';
-        $data = HumanResources::find($id);
+        if (!$data = HumanResources::find($id)){
+            return abort(404,'Not Found');
+        }
         $action = route('dashboard.sdm.edit',$id);
         $method = 'post';
         $redirect = route('dashboard.sdm');
@@ -63,6 +65,7 @@ class HumanResourcesController extends DashboardController
             'department_id' => 'required',
             'image' => 'required|image',
             'name' => 'required',
+            'nip' => 'required',
             'position' => 'required',
             'position_en' => '',
             'level_id' => 'required',
@@ -80,7 +83,7 @@ class HumanResourcesController extends DashboardController
             DB::rollBack();
             return response()->json([
                 'message' => $exception->getMessage()
-            ]);
+            ],500);
         }
         DB::commit();
         return response()->json([
@@ -93,6 +96,7 @@ class HumanResourcesController extends DashboardController
             'department_id' => 'required',
             'image' => 'image',
             'name' => 'required',
+            'nip' => 'required',
             'position' => 'required',
             'position_en' => '',
             'level_id' => 'required',
@@ -105,13 +109,15 @@ class HumanResourcesController extends DashboardController
         }
         try {
             DB::beginTransaction();
-            $model = HumanResources::find($id);
+            if (!$model = HumanResources::find($id)){
+                return abort(404,'Not Found');
+            }
             $model->update($data);
         } catch (\Exception $exception){
             DB::rollBack();
             return response()->json([
                 'message' => $exception->getMessage()
-            ]);
+            ],500);
         }
         DB::commit();
         return response()->json([
@@ -120,7 +126,9 @@ class HumanResourcesController extends DashboardController
     }
 
     public function delete($id){
-        $model = HumanResources::find($id);
+        if (!$model = HumanResources::find($id)){
+            return abort(404,'Not Found');
+        }
         try {
             $model->delete();
         }catch (\Exception $exception){

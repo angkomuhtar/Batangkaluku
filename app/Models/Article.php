@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 /**
  * @property integer $id
@@ -46,4 +47,14 @@ class Article extends Model
     protected $dates = [
         'published_time'
     ];
+
+    public function getDescStrAttribute(){
+        $lang = request()->query('lang','id');
+        return substr(strip_tags($lang == 'en' ? ($this->description_en ?? $this->description) : $this->description),0,110);
+    }
+
+    public function getTitleStrAttribute(){
+        $lang = request()->query('lang','id');
+        return Str::slug($lang == 'en' ? ($this->title_en ?? $this->title) : $this->title);
+    }
 }
