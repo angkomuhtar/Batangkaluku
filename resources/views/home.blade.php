@@ -349,7 +349,23 @@
 
 
         </div>
+    </section>
 
+    <section class="container">
+        <div class="w-full flex justify-center relative p-6 lg:p-16 rounded-lg bg-no-repeat" style="background:url({{'assets/img/bg-maklumat.png'}});background-repeat: no-repeat;background-size: cover;">
+            <!-- <img src="{{'assets/img/bg-maklumat.png'}}" class="absolute botttom-1/2 rounded-md" alt=""> -->
+            <div class="flex flex-col lg:flex-row justify-center lg:space-x-4 items-center">
+                    <img src="{{'assets/img/logo-circle.png'}}" class="h-auto w-16 lg:w-40 " alt="">
+                <div class="flex-1">
+                    <h3 class="text-xl lg:text-4xl font-bold text-white leading-8 text-center lg:text-center">
+                        Maklumat Pelayanan
+                    </h3>
+                    <p class="text-sm lg:text-xl font-semibold text-white mt-2 lg:mt-6">
+                    Dengan ini Kami sanggup menyelenggarakan pelayanan sesuai standar yang telah ditetapkan dan apabila tidak menepati janji ini, kami siap menerima sanksi sesuai Peraturan Perundang-Undangan yang berlaku.
+                    </p>
+                </div>
+            </div>
+        </div>
     </section>
 @endsection
 

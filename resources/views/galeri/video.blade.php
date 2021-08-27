@@ -20,7 +20,7 @@
             <div class="grid lg:grid-cols-3 gap-6">
                 @foreach ($data AS $row)
                 <div class="bg-white rounded-md border border-border">
-                    <video class="rounded-md" src="{{asset('storage/'.$row->content)}}" controls></video>
+                    <video class="rounded-md w-full" src="{{asset('storage/'.$row->content)}}" controls></video>
                     <div class="p-3">
                         <h3 class="text-title">
                             {{$lang == 'en' ? ($row->title_en ?? $row->title) : $row->title}}

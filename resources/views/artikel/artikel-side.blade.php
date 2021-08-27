@@ -1,22 +1,29 @@
-<div class="rounded-sm border border-border py-4 px-2 w-full lg:w-auto">
-    <div class="border-b border-border">
-        <h3 class="text-title text-dark mb-4">
+
+<div class="menu-side">
+    <div class="menu-side-header">
+        <h3 class="text-title text-dark">
             {{__('general.news')}}
         </h3>
     </div>
-    <ul class="py-3 space-y-1">
-        <a href="{{route('artikel',['lang' => $lang,'type' => 'pelatihan'])}}">
-            <li class="cursor-pointer side-menu {{route('artikel','pelatihan') == url()->current() ? 'active' : ''}}">
+    <ul class="menu-items space-y-1 py-7">
+        <li class="flex">
+            <a href="{{route('artikel',['lang' => $lang,'type' => 'pelatihan'])}}" 
+                class="menu-links {{route('artikel','pelatihan') == url()->current() ? 'active' : ''}}">
                 {{__('general.artikel_pelatihan')}}
-            </li>
-        </a>
-        <a href="{{route('artikel',['lang' => $lang,'type' => 'pertanian'])}}">
-            <li class="cursor-pointer side-menu {{route('artikel','pertanian') == url()->current() ? 'active' : ''}}">
+            </a>
+        </li>
+        <li class="flex">
+            <a href="{{route('artikel',['lang' => $lang,'type' => 'pertanian'])}}" 
+                class="menu-links {{route('artikel','pertanian') == url()->current() ? 'active' : ''}}">
                 {{__('general.artikel_pertanian')}}
-            </li>
-        </a>
-        <a href="{{route('artikel',['lang' => $lang,'type' => 'umum'])}}">
-            <li class="cursor-pointer side-menu {{route('artikel','umum') == url()->current() ? 'active' : ''}}">{{__('general.artikel_umum')}}</li>
-        </a>
+            </a>
+        </li>
+        <li class="flex">
+            <a href="{{route('artikel',['lang' => $lang,'type' => 'umum'])}}" 
+                class="menu-links {{route('artikel','umum') == url()->current() ? 'active' : ''}}">
+                {{__('general.artikel_umum')}}
+            </a>
+        </li>
     </ul>
 </div>
+
