@@ -85,17 +85,24 @@
         <p class="header-subtitle">{{__('general.latest_news_desc')}}</p>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             @foreach ($news AS $row)
-                <div class="rounded-sm">
-                    <a href="{{route('artikel.detail',['title' => $row->title_str, 'id' => $row->id,'type' => $row->type, 'lang' => $lang])}}">
-                        <img class="rounded-sm w-full h-auto" src="{{asset('storage/'.$row->image)}}"
-                             alt="{{$row->title}}">
-                        <p class="text-secondary font-semibold text-xs mt-5 mb-1">{{__('general.artikel_'.$row->type)}}</p>
-                        <h3 class="font-semibold text-xl mb-3">{{$lang == 'en' ? ($row->title_en ?? $row->title) : $row->title }}</h3>
-                        <p class="mb-3 font-normal text-sm text-darkGrey">{{$row->desc_str}}...</p>
-                        <p class="mb-3 font-normal text-xs text-darkLight">{{tanggal($row->published_time)}}</p>
-                    </a>
+                <div class="card-article">
+                    <img src="{{asset('storage/'.$row->image)}}" class="card-article-img" alt="{{$row->title}}" />
+                    <div class="p-5 border border-t-0">
+                        <p class="card-article-category">
+                            <a href="#" class="transition-colors duration-200 text-secondary hover:text-deep-purple-accent-700" aria-label="Category" title="{{$row->title}}">{{__('general.artikel_'.$row->type)}}</a>
+                            <span class="text-gray-600">— {{tanggal($row->published_time)}}</span>
+                        </p>
+                        <a href="{{route('artikel.detail',['title' => $row->title_str, 'id' => $row->id,'type' => $row->type, 'lang' => $lang])}}" aria-label="Category" title="Film It!" class="card-article-title">
+                            {{$lang == 'en' ? ($row->title_en ?? $row->title) : $row->title }}
+                        </a>
+                        <p class="mb-2 text-gray-700">
+                            {{$row->desc_str}}...
+                        </p>
+                    </div>
                 </div>
             @endforeach
+        </div>
+        <div class="grid gap-8 lg:grid-cols-3 sm:max-w-sm sm:mx-auto lg:max-w-full">
         </div>
     </section>
 
@@ -216,23 +223,17 @@
                         <i class="fas fa-search text-lg"></i>
                     </button>
                 </div>
+
                 <div class="flex jusify-center gap-6 items-center">
                     <div>
                         <h2 class="text-2xl font-bold city"></h2>
-                        <h2 class="text-2xl font-bold suhu"> 0 C</h2>
+                        <h2 class="text-2xl font-bold suhu"> 25 C</h2>
                         <img class="" src="https://openweathermap.org/img/wn/02n@2x.png" alt="">
                     </div>
-                    <div class="flex jusify-center gap-6 items-center">
-                        <div>
-                            <h2 class="text-2xl font-bold city"></h2>
-                            <h2 class="text-2xl font-bold suhu"> 25 C</h2>
-                            <img class="" src="https://openweathermap.org/img/wn/02n@2x.png" alt="">
-                        </div>
-                        <div>
-                            <h2 class="font-semibold text-md desc capitali"></h2>
-                            <h2 class="font-semibold text-md kelembapan">Kelembapan : <span>6</span> %</h2>
-                            <h2 class="font-semibold text-md angin">Kecepatan Angin : <span>6</span> Km/jam</h2>
-                        </div>
+                    <div>
+                        <h2 class="font-semibold text-md desc capitali"></h2>
+                        <h2 class="font-semibold text-md kelembapan">Kelembapan : <span>6</span> %</h2>
+                        <h2 class="font-semibold text-md angin">Kecepatan Angin : <span>6</span> Km/jam</h2>
                     </div>
                 </div>
             </div>

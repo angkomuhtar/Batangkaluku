@@ -18,7 +18,9 @@
 
 <header>
     <nav class="container flex items-center justify-between py-7">
-        <img src="{{ asset('assets/img/logo.png') }}" alt="" class="h-10 w-auto">
+        <a href="{{route('home',['lang' => $lang])}}">
+            <img src="{{ asset('assets/img/logo.png') }}" alt="" class="h-10 w-auto">
+        </a>
         <ul class=" hidden lg:flex space-x-8 ">
             <li class="capitalize hover:text-secondary active:text-secondary"><a href="{{route('home',['lang' => $lang])}}"> {{__('general.home')}}</a></li>
             <li class="capitalize hover:text-secondary active:text-secondary"><a href="{{route('lembaga.tentang',['lang' => $lang])}}"> {{__('general.institution')}}</a></li>
@@ -28,14 +30,15 @@
             <li class="capitalize hover:text-secondary active:text-secondary"><a href="{{route('gallery.photo',['lang' => $lang])}}"> {{__('general.gallery')}}</a></li>
         </ul>
         <div>
-            <a href="{{url()->current()}}?lang={{$lang == 'en' ? 'id' : 'en'}}" class="btn-white" style="margin-right: 5px">
+            <a href="{{url()->current()}}?lang={{$lang == 'en' ? 'id' : 'en'}}" class="btn-sm-secondary hover:text-white hover:bg-secondary flex" style="margin-right: 5px">
                 @if ($lang == 'en')
+                    <img src="{{asset('assets/img/flags-icons/id.png')}}" alt="" class="h-4 w-auto mr-2">
                     IND
                 @else
+                    <img src="{{asset('assets/img/flags-icons/uk.png')}}" alt="" class="h-4 w-auto mr-2">
                     ENG
                 @endif
             </a>
-            <a href="" class="btn-sm-secondary hover:text-white hover:bg-secondary" >{{__('general.contact')}}</a>
         </div>
     </nav>
 

@@ -27,15 +27,21 @@
                     {{__('general.download_doc')}} :
                 </h3>
             @endif
-            <div class="lg:col-span-3 grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 py-6">
+                <div class="lg:col-span-3 md:cols-span-2">
+                    <h3 class="text-header-3"> Daftar Pelatihan</h3>
+                </div>
                 @foreach($training AS $row)
                     <div class="rounded-sm">
                         <img class="rounded-sm w-full h-auto" src="{{asset('storage/'.$row->image)}}" alt="{{$row->title}}">
-                        <h3 class="font-semibold text-xl mb-3">{{$lang == 'en' ? ($row->title_en ?? $row->title) : $row->title }}</h3>
-                        <p class="mb-3 font-normal text-sm text-darkGrey">{{tanggal($row->date,true)}}</p>
-                        <p class="mb-3 font-normal text-sm text-darkGrey">{{$row->time_start}} - {{$row->time_end ?? __('general.finish')}}</p>
-                        <p class="mb-3 font-normal text-sm text-darkGrey">{{$row->location}}</p>
+                        <div class="py-4 grid gap-3">
+                            <h3 class="text-subttile-2">{{$lang == 'en' ? ($row->title_en ?? $row->title) : $row->title }}</h3>
+                            <p class="text-info"><i class="far fa-calendar-alt mr-2"> </i>{{tanggal($row->date,true)}}</p>
+                            <p class="text-info"><i class="far fa-clock mr-2"> </i>{{$row->location}}</p>
+                            <p class="text-info"><i class="fas fa-map-marked-alt mr-2"> </i>{{$row->time_start}} - {{$row->time_end ?? __('general.finish')}}</p>
+                        </div>
                     </div>
+
                 @endforeach
                 <div class="lg:col-span-2 flex justify-center">
                     {{$training->links()}}
