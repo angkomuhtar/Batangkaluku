@@ -357,7 +357,7 @@
             <div class="flex flex-col lg:flex-row justify-center lg:space-x-4 items-center">
                     <img src="{{'assets/img/logo-circle.png'}}" class="h-auto w-16 lg:w-40 " alt="">
                 <div class="flex-1">
-                    <h3 class="text-xl lg:text-4xl font-bold text-white leading-8 text-center lg:text-center">
+                    <h3 class="text-xl lg:text-4xl font-bold text-white leading-8 text-center lg:text-left">
                         Maklumat Pelayanan
                     </h3>
                     <p class="text-sm lg:text-xl font-semibold text-white mt-2 lg:mt-6">

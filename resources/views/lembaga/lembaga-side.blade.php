@@ -1,11 +1,14 @@
 
 <div class="menu-side">
     <div class="menu-side-header">
-        <h3 class="text-title text-dark">
-        {{__('general.institution')}}
+        <h3 class="text-title text-dark hidden lg:block">
+            {{__('general.institution')}}
         </h3>
+        <button class="lg:hidden" id="side-open"> 
+            <i class="far fa-list-alt"></i>
+        </button>
     </div>
-    <ul class="menu-items space-y-1 py-7">
+    <ul class="menu-items hidden">
         <li class="flex">
             <a href="{{route('lembaga.tentang',['lang' => $lang])}}" 
                 class="menu-links {{route('lembaga.tentang') == url()->current() ? 'active' : ''}}">

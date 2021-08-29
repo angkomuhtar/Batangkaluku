@@ -99,25 +99,28 @@
 }
 /* end card */
 .section{
-    @apply container grid lg:grid-cols-4 gap-10 pb-10
+    @apply container flex gap-10 pb-10
 }
 
 /* side menu */
+.menu-items{
+    @apply space-y-1 py-5 lg:block
+}
 
 .menu-side{
-    @apply rounded-sm border border-border py-7 px-4 w-full lg:w-auto
+    @apply rounded-sm border border-border lg:py-7 px-4 w-full lg:w-auto
 }
 .menu-side-header{
-    @apply border-b border-border py-2
+    @apply border-b border-border py-2 flex justify-between items-center
 }
 .menu-links{
-   @apply p-4 text-darkGrey text-sm whitespace-nowrap flex-1
+   @apply p-4 text-darkGrey font-semibold text-sm whitespace-nowrap flex-1
 }
 .menu-links:hover{
-    @apply p-4 text-secondary font-semibold text-sm bg-opacity-10 bg-secondary
+    @apply p-4 text-secondary text-sm bg-opacity-10 bg-secondary
 }
 .menu-links.active{
-    @apply p-4 text-secondary font-semibold text-sm bg-opacity-10 bg-secondary
+    @apply p-4 text-secondary text-sm bg-opacity-10 bg-secondary
 }
 
 

@@ -84,6 +84,26 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" referrerpolicy="no-referrer"></script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+    <script>
+        $(document).ready(function(){
+            $("#open-menu").click(function(){
+                $("#nav-menu").toggleClass("translate-x-full").toggleClass("translate-x-0")
+            })
+            
+            $("#close-menu").click(function(){
+                $("#nav-menu").toggleClass("translate-x-0").toggleClass("translate-x-full")
+                // $("#nav-menu").toggleClass("right-0").toggleClass("right-full")
+            })
+
+            $("#side-open").click(function(){
+                $(this).children("i").toggleClass("far").toggleClass('fas fa-times');
+                $(".menu-items").toggleClass("hidden")
+                $(".menu-side").toggleClass("py-5")
+                $(".menu-side-header h3").toggleClass("hidden")
+            })
+        })
+    </script>
     @stack('add-script')
 
 </body>

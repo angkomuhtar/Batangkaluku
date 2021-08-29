@@ -7,7 +7,7 @@
         {{__('general.unit_work')}}
         </h3>
     </div>
-    <ul class="menu-items space-y-1 py-7">
+    <ul class="menu-items  hidden">
         <li class="flex">
             <a href="{{route('satker',['lang' => $lang,'service' => 'sistem_pengendalian_intern'])}}" 
                 class="menu-links {{route('satker',['service' => 'sistem_pengendalian_intern']) == url()->current() ? 'active' : ''}}">

@@ -11,8 +11,8 @@
         </div>
     </section>
 
-    <section class="container flex lg:space-x-6">
-        <div class="hidden lg:block w-4/12">
+    <section class="section">
+        <div class="">
             @include('galeri.side')
         </div>
         <div class="w-full space-y-10 px-4 pb-10">

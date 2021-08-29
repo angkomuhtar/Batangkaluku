@@ -4,7 +4,7 @@
             {{__('general.serv_n_info')}}
         </h3>
     </div>
-    <ul class="menu-items space-y-1 py-7">
+    <ul class="menu-items  hidden">
         <li>
            <ul class="pb-5 space-y-1">
                <li>

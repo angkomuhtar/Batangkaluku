@@ -15,7 +15,7 @@
         <div class="">
             @include('lembaga.lembaga-side')
         </div>
-        <div class="lg:col-span-3 space-y-10">
+        <div class="flex-1 space-y-10">
             <div class="w-full">
                 <div class="space-y-4">
                     @foreach($bagian AS $row)
@@ -30,7 +30,7 @@
                                 </svg>
                             </button>
                             <div class="p-4 pt-0 hidden space-y-6">
-                                <div class="grid grid-cols-2 lg:grid-cols-3 gap-6">
+                                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                                     @foreach ($row->humanResources->where('level_id',1)->sortBy('order_id') AS $sdm)
                                         <div class="bg-white rounded-md p-2">
                                             <img src="{{asset('storage/'.$sdm->image)}}" alt="" class="rounded-md">
@@ -45,7 +45,7 @@
                                         </div>
                                     @endforeach
                                 </div>
-                                <div class="grid grid-cols-2 lg:grid-cols-3 gap-6">
+                                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                                     @foreach ($row->humanResources->where('level_id',2)->sortBy('order_id') AS $sdm)
                                         <div class="bg-white rounded-md p-2">
                                             <img src="{{asset('storage/'.$sdm->image)}}" alt="" class="rounded-md">
@@ -60,7 +60,7 @@
                                         </div>
                                     @endforeach
                                 </div>
-                                <div class="grid grid-cols-2 lg:grid-cols-3 gap-6">
+                                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                                     @foreach ($row->humanResources->where('level_id',3)->sortBy('order_id') AS $sdm)
                                         <div class="bg-white rounded-md p-2">
                                             <img src="{{asset('storage/'.$sdm->image)}}" alt="" class="rounded-md">

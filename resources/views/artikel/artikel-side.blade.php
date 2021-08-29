@@ -1,11 +1,15 @@
 
 <div class="menu-side">
     <div class="menu-side-header">
-        <h3 class="text-title text-dark">
+        <h3 class="text-title text-dark hidden lg:block">
             {{__('general.news')}}
         </h3>
+
+        <button class="lg:hidden" id="side-open"> 
+            <i class="far fa-list-alt"></i>
+        </button>
     </div>
-    <ul class="menu-items space-y-1 py-7">
+    <ul class="menu-items  hidden">
         <li class="flex">
             <a href="{{route('artikel',['lang' => $lang,'type' => 'pelatihan'])}}" 
                 class="menu-links {{route('artikel','pelatihan') == url()->current() ? 'active' : ''}}">
