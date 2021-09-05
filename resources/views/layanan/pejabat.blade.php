@@ -22,36 +22,49 @@
             <div class="space-y-3">
                 {!! $lang == 'en' ? ($data->content_en ?? $data->content) : $data->content !!}
             </div>
-            @if ($data->pageAttachments->count())
-                <h3 class="" style="font-weight: bolder">
-                    {{__('general.download_doc')}} :
-                </h3>
-            @endif
-            <div class="lg:col-span-3 grid grid-cols-1 lg:grid-cols-1 gap-6">
-                    <div class="rounded-sm">
-                       <table>
-                           <thead>
-                           <tr>
-                               <td>No.</td>
-                               <td>{{__('general.officer_name')}}</td>
-                               <td>NIP</td>
-                               <td>{{__('general.rank_class')}}</td>
-                               <td>{{__('general.position')}}</td>
-                           </tr>
-                           </thead>
-                           <tbody>
-                           @foreach ($pejabat AS $row)
-                               <tr>
-                                   <td>{{$loop->iteration}}</td>
-                                   <td>{{$row->name}}</td>
-                                   <td>{{$row->nip}}</td>
-                                   <td>{{$lang == 'en' ? $row->rank_en ?? $row->rank : $row->rank}}</td>
-                                   <td>{{$lang == 'en' ? $row->position_en ?? $row->position : $row->position}}</td>
-                               </tr>
-                           @endforeach
-                           </tbody>
-                       </table>
+
+            <div class="py-4">
+                <div class="overflow-x-auto">
+                    <div class="inline-block w-full shadow rounded-lg overflow-hidden">
+                        <table class="min-w-full leading-normal border-2">
+                            <thead>
+                            <tr>
+                                <th
+                                    class="px-5 py-3 border-b-2 border-border text-left text-xs font-bold text-gray-600 uppercase tracking-wider">
+                                    No.
+                                </th>
+                                <th
+                                    class="px-5 py-3 border-b-2 border-border text-left text-xs font-bold text-gray-600 uppercase tracking-wider">
+                                    {{__('general.officer_name')}}
+                                </th>
+                                <th
+                                    class="px-5 py-3 border-b-2 border-border text-left text-xs font-bold text-gray-600 uppercase tracking-wider">
+                                    NIP
+                                </th>
+                                <th
+                                    class="px-5 py-3 border-b-2 border-border text-left text-xs font-bold text-gray-600 uppercase tracking-wider">
+                                    {{__('general.rank_class')}}
+                                </th>
+                                <th
+                                    class="px-5 py-3 border-b-2 border-border text-left text-xs font-bold text-gray-600 uppercase tracking-wider">
+                                    {{__('general.position')}}
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach ($pejabat AS $row)
+                                <tr>
+                                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm whitespace-no-wrap">{{$loop->iteration}}</td>
+                                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm whitespace-no-wrap">{{$row->name}}</td>
+                                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm whitespace-no-wrap">{{$row->nip}}</td>
+                                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm whitespace-no-wrap">{{$lang == 'en' ? $row->rank_en ?? $row->rank : $row->rank}}</td>
+                                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm whitespace-no-wrap">{{$lang == 'en' ? $row->position_en ?? $row->position : $row->position}}</td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
                     </div>
+                </div>
             </div>
         </div>
     </section>
