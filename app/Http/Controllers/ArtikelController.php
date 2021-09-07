@@ -4,28 +4,29 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 use App\Models\RouteVisitor;
-use Illuminate\Http\Request;
 
 class ArtikelController extends Controller
 {
-    public function index($type){
+    public function index($type)
+    {
         $lang = request()->query('lang', 'id');
-        $data = Article::where('is_active',1)
-            ->where('type',$type)
-            ->where('published_time','<=',now())
-            ->orderBy('published_time','desc')
+        $data = Article::where('is_active', 1)
+            ->where('type', $type)
+            ->where('published_time', '<=', now())
+            ->orderBy('published_time', 'desc')
             ->paginate(6);
         $visitor = RouteVisitor::get();
-        return view('artikel.index',compact('lang','data','visitor'));
+        return view('artikel.index', compact('lang', 'data', 'visitor'));
     }
 
-    public function detail($type,$id,$title){
+    public function detail($type, $id, $title)
+    {
         $lang = request()->query('lang', 'id');
-        $data = Article::where('is_active',1)
-            ->where('type',$type)
-            ->where('published_time','<=',now())
+        $data = Article::where('is_active', 1)
+            ->where('type', $type)
+            ->where('published_time', '<=', now())
             ->find($id);
         $visitor = RouteVisitor::get();
-        return view('artikel.detail',compact('lang','data','visitor'));
+        return view('artikel.detail', compact('lang', 'data', 'visitor'));
     }
 }

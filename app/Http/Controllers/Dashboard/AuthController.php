@@ -6,36 +6,41 @@ use Illuminate\Http\Request;
 
 class AuthController extends DashboardController
 {
-    public function index(){
+    public function index()
+    {
         return view('admin.login');
     }
 
-    public function login(Request $request){
+    public function login(Request $request)
+    {
         $remeber_me = $request->remember ? true : false;
-        $credential = $request->only(['email','password']);
-        if (auth()->attempt($credential,$remeber_me)){
+        $credential = $request->only(['email', 'password']);
+        if (auth()->attempt($credential, $remeber_me)) {
             return redirect()->intended(route('dashboard'));
         }
-        return redirect()->back()->with('error','Username/Password Tidak Ditemukan!');
+        return redirect()->back()->with('error', 'Username/Password Tidak Ditemukan!');
     }
 
-    public function logout(){
+    public function logout()
+    {
         auth()->logout();
         return redirect()->route('login');
     }
 
-    public function profile(){
+    public function profile()
+    {
         return view('admin.pages.profile');
     }
 
-    public function postProfile(Request $request){
+    public function postProfile(Request $request)
+    {
         $data = $request->validate([
             'name' => 'required',
             'email' => 'required|email',
             'password' => 'nullable',
             'old_password' => 'nullable'
         ]);
-        if ($data['password'] || $data['old_password']){
+        if ($data['password'] || $data['old_password']) {
             $request->validate([
                 'old_password' => 'password',
                 'password' => 'required|confirmed'

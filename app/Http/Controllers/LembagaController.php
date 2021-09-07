@@ -13,7 +13,7 @@ class LembagaController extends Controller
         $lang = request()->query('lang', 'id');
         $data = Content::where('name', 'tentang_kami')->first();
         $visitor = RouteVisitor::get();
-        return view('lembaga.tentang', compact('lang', 'data','visitor'));
+        return view('lembaga.tentang', compact('lang', 'data', 'visitor'));
     }
 
     public function struktur()
@@ -21,7 +21,7 @@ class LembagaController extends Controller
         $lang = request()->query('lang', 'id');
         $data = Content::where('name', 'struktur_organisasi')->first();
         $visitor = RouteVisitor::get();
-        return view('lembaga.struktur', compact('lang', 'data','visitor'));
+        return view('lembaga.struktur', compact('lang', 'data', 'visitor'));
     }
 
     public function sdm()
@@ -29,6 +29,6 @@ class LembagaController extends Controller
         $lang = request()->query('lang', 'id');
         $bagian = Department::with('humanResources')->where('is_active', 1)->orderBy('order_id')->get();
         $visitor = RouteVisitor::get();
-        return view('lembaga.sdm', compact('lang', 'bagian','visitor'));
+        return view('lembaga.sdm', compact('lang', 'bagian', 'visitor'));
     }
 }

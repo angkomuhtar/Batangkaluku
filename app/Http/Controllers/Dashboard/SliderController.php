@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 class SliderController extends DashboardController
 {
     protected $image_path = 'slider';
+
     public function __construct()
     {
         parent::__construct();
@@ -23,7 +24,7 @@ class SliderController extends DashboardController
         $breadcrumbs = $this->breadcrumbs;
         $title = 'BBPP Batangkaluku - Slider';
         $data = Slider::get();
-        return view('admin.pages.slider.index', compact('title', 'breadcrumbs','data'));
+        return view('admin.pages.slider.index', compact('title', 'breadcrumbs', 'data'));
     }
 
     public function add()
@@ -38,26 +39,28 @@ class SliderController extends DashboardController
         $action = route('dashboard.slider');
         $method = 'post';
         $redirect = route('dashboard.slider');
-        return view('admin.pages.slider.form', compact('breadcrumbs', 'title','data','action','method','redirect'));
+        return view('admin.pages.slider.form', compact('breadcrumbs', 'title', 'data', 'action', 'method', 'redirect'));
     }
 
-    public function edit($id){
+    public function edit($id)
+    {
         $this->breadcrumbs[] = [
             'label' => 'Edit Slider',
-            'url' => route('dashboard.slider.edit',$id)
+            'url' => route('dashboard.slider.edit', $id)
         ];
         $breadcrumbs = $this->breadcrumbs;
         $title = 'BBPP Batangkaluku - Edit Slider';
-        if (!$data = Slider::find($id)){
-            return abort(404,'Not Found');
+        if (!$data = Slider::find($id)) {
+            return abort(404, 'Not Found');
         }
-        $action = route('dashboard.slider.edit',$id);
+        $action = route('dashboard.slider.edit', $id);
         $method = 'post';
         $redirect = route('dashboard.slider');
-        return view('admin.pages.slider.form', compact('breadcrumbs', 'title','data','action','method','redirect'));
+        return view('admin.pages.slider.form', compact('breadcrumbs', 'title', 'data', 'action', 'method', 'redirect'));
     }
 
-    public function create(Request $request){
+    public function create(Request $request)
+    {
         $data = $request->validate([
             'image' => 'required|image',
             'text_header' => '',
@@ -67,18 +70,18 @@ class SliderController extends DashboardController
             'order_id' => '',
             'is_active' => 'boolean|required'
         ]);
-        if ($data['image']){
+        if ($data['image']) {
             $ext = $request->file('image')->getClientOriginalExtension();
-            $data['image'] = $request->file('image')->storeAs($this->image_path,'slider_'.date('YmdHis').'.'.$ext,'public');
+            $data['image'] = $request->file('image')->storeAs($this->image_path, 'slider_' . date('YmdHis') . '.' . $ext, 'public');
         }
         try {
             DB::beginTransaction();
             Slider::create($data);
-        } catch (\Exception $exception){
+        } catch (\Exception $exception) {
             DB::rollBack();
             return response()->json([
                 'message' => $exception->getMessage()
-            ],500);
+            ], 500);
         }
         DB::commit();
         return response()->json([
@@ -86,7 +89,8 @@ class SliderController extends DashboardController
         ]);
     }
 
-    public function update(Request $request, $id){
+    public function update(Request $request, $id)
+    {
         $data = $request->validate([
             'image' => 'image',
             'text_header' => '',
@@ -96,21 +100,21 @@ class SliderController extends DashboardController
             'order_id' => '',
             'is_active' => 'boolean|required'
         ]);
-        if (isset($data['image'])){
+        if (isset($data['image'])) {
             $ext = $request->file('image')->getClientOriginalExtension();
-            $data['image'] = $request->file('image')->storeAs($this->image_path,'slider_'.date('YmdHis').'.'.$ext,'public');
+            $data['image'] = $request->file('image')->storeAs($this->image_path, 'slider_' . date('YmdHis') . '.' . $ext, 'public');
         }
         try {
             DB::beginTransaction();
-            if (!$model = Slider::find($id)){
-                return abort(404,'Not Found');
+            if (!$model = Slider::find($id)) {
+                return abort(404, 'Not Found');
             }
             $model->update($data);
-        } catch (\Exception $exception){
+        } catch (\Exception $exception) {
             DB::rollBack();
             return response()->json([
                 'message' => $exception->getMessage()
-            ],500);
+            ], 500);
         }
         DB::commit();
         return response()->json([
@@ -118,16 +122,17 @@ class SliderController extends DashboardController
         ]);
     }
 
-    public function delete($id){
-        if (!$model = Slider::find($id)){
-            return abort(404,'Not Found');
+    public function delete($id)
+    {
+        if (!$model = Slider::find($id)) {
+            return abort(404, 'Not Found');
         }
         try {
             $model->delete();
-        }catch (\Exception $exception){
-            return redirect()->back()->with('error','Gagal Menghapus Data! <br><i>'. $exception->getMessage().'</i>');
+        } catch (\Exception $exception) {
+            return redirect()->back()->with('error', 'Gagal Menghapus Data! <br><i>' . $exception->getMessage() . '</i>');
         }
-        return redirect()->back()->with('success','Berhasil Menghapus Data');
+        return redirect()->back()->with('success', 'Berhasil Menghapus Data');
     }
 
 }
