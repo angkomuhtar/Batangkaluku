@@ -66,9 +66,9 @@
                     <div class="link">
                         <h6 class="footer-head">{{__('general.visitor')}}</h6>
                         <ul class="space-y-1">
-                            <li><a href="#" class="footer-list">Pages</a></li>
-                            <li><a href="#" class="footer-list">Online</a></li>
-                            <li><a href="#" class="footer-list">{{__('general.today_visitor')}}</a></li>
+                            <li><a href="#" class="footer-list">Pages : {{$visitor->where('route',url()->current())->count()}}</a></li>
+                            <li><a href="#" class="footer-list">Online : {{$visitor->where('created_at', '>', now()->subMinutes(10)->toDateTimeString())->unique('unique_id')->count() ?? 1}}</a></li>
+                            <li><a href="#" class="footer-list">{{__('general.today_visitor')}} : {{$visitor->where('created_at', '>', now()->subHours(24)->toDateTimeString())->unique('unique_id')->count()}}</a></li>
                         </ul>
                     </div>
                 </div>

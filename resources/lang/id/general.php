@@ -48,4 +48,5 @@ return [
     'officer_name' => 'Nama Pejabat',
     'rank_class' => 'Pangkat / Golongan',
     'position' => 'Jabatan',
+    'service_notice' => 'Maklumat Pelayanan'
 ];

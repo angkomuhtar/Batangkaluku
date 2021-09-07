@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Article;
+use App\Models\Content;
+use App\Models\RouteVisitor;
 use App\Models\Slider;
 use Illuminate\Http\Request;
 
@@ -10,6 +12,7 @@ class HomeController extends Controller
 {
     public function index(){
         $lang = request()->query('lang','id');
+        $maklumat = Content::where('name','maklumat')->first();
         $slider = Slider::where('is_active',1)->orderBy('order_id')->get();
         $news = Article::where('is_active',1)
             ->where('published_time','<=',now())
@@ -28,6 +31,7 @@ class HomeController extends Controller
             ->orderBy('published_time','desc')
             ->take(6)
             ->get();
-        return view('home',compact('slider','news','news_pertanian','news_pelatihan','lang'));
+        $visitor = RouteVisitor::get();
+        return view('home',compact('slider','news','news_pertanian','news_pelatihan','lang','maklumat','visitor'));
     }
 }

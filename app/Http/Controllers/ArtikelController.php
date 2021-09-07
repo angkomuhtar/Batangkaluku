@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Article;
+use App\Models\RouteVisitor;
 use Illuminate\Http\Request;
 
 class ArtikelController extends Controller
@@ -14,7 +15,8 @@ class ArtikelController extends Controller
             ->where('published_time','<=',now())
             ->orderBy('published_time','desc')
             ->paginate(6);
-        return view('artikel.index',compact('lang','data'));
+        $visitor = RouteVisitor::get();
+        return view('artikel.index',compact('lang','data','visitor'));
     }
 
     public function detail($type,$id,$title){
@@ -23,7 +25,7 @@ class ArtikelController extends Controller
             ->where('type',$type)
             ->where('published_time','<=',now())
             ->find($id);
-
-        return view('artikel.detail',compact('lang','data'));
+        $visitor = RouteVisitor::get();
+        return view('artikel.detail',compact('lang','data','visitor'));
     }
 }
