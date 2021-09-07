@@ -15,7 +15,8 @@
                 <div class="el-chart-w">
                     <canvas height="120" id="donutChartCovid" width="120"></canvas>
                     <div class="inside-donut-chart-label">
-                        <strong id="total-kasus">0</strong><span>Kasus</span>
+                        <strong id="total-kasus">0</strong><span>Kasus</span><br>
+                        <span>{{now()}}</span>
                     </div>
                 </div>
                 <div class="el-legend condensed">
@@ -87,7 +88,8 @@
             var sembuh = parseInt(res.sembuh);
             var meninggal = parseInt(res.meninggal);
             var dirawat = parseInt(res.dirawat);
-            var total = positif+sembuh+meninggal+dirawat;
+            // var total = positif+sembuh+meninggal+dirawat;
+            var total = positif;
             $('#total-kasus').html(total.toLocaleString('id-ID'));
             $('#jumlah-positif').html(positif.toLocaleString('id-ID'));
             $('#jumlah-sembuh').html(sembuh.toLocaleString('id-ID'));
@@ -106,13 +108,17 @@
                 // donut chart data
                 var data1 = {
                     labels: [
-                        "Meninggal", "Positif", "Sembuh","Dirawat"
+                        // "Meninggal", "Positif", "Sembuh","Dirawat"
+                        "Meninggal", "Sembuh","Dirawat"
                     ],
                     datasets: [
                         {
-                            data: [meninggal, positif, sembuh,dirawat],
-                            backgroundColor: [ "#ff000e", "#4867fc", "#4ecc48","#fffd59"],
-                            hoverBackgroundColor: [ "#ef5350", "#4867fc", "#4ecc48","#fffd59"],
+                            // data: [meninggal, positif, sembuh,dirawat],
+                            data: [meninggal, sembuh,dirawat],
+                            // backgroundColor: [ "#ff000e", "#4867fc", "#4ecc48","#fffd59"],
+                            backgroundColor: [ "#ff000e", "#4ecc48","#fffd59"],
+                            // hoverBackgroundColor: [ "#ef5350", "#4867fc", "#4ecc48","#fffd59"],
+                            hoverBackgroundColor: [ "#ef5350", "#4ecc48","#fffd59"],
                             borderWidth: 6,
                             hoverBorderColor: 'transparent'
                         }]
