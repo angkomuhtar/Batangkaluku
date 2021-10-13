@@ -17,25 +17,27 @@ class ContentController extends DashboardController
         ];
     }
 
-    public function edit($type){
-        if (!$data = Content::where('name',$type)->first()){
+    public function edit($type)
+    {
+        if (!$data = Content::where('name', $type)->first()) {
             $data = Content::create([
                 'name' => $type,
                 'content' => '',
             ]);
         }
         $this->breadcrumbs[] = [
-            'label' => 'Edit Konten '.$data->name_str,
-            'url' => route('dashboard.konten.edit',$type)
+            'label' => 'Edit Konten ' . $data->name_str,
+            'url' => route('dashboard.konten.edit', $type)
         ];
         $breadcrumbs = $this->breadcrumbs;
-        $title = 'BBPP Batangkaluku - Edit Konten '.$data->name_str;
-        $action = route('dashboard.konten.edit',$type);
+        $title = 'BBPP Batangkaluku - Edit Konten ' . $data->name_str;
+        $action = route('dashboard.konten.edit', $type);
         $method = 'put';
-        return view('admin.pages.konten.form', compact('breadcrumbs', 'title','data','action','method'));
+        return view('admin.pages.konten.form', compact('breadcrumbs', 'title', 'data', 'action', 'method'));
     }
 
-    public function update(Request $request, $type){
+    public function update(Request $request, $type)
+    {
         $data = $request->validate([
             'content' => 'required',
             'content_en' => '',
@@ -43,15 +45,15 @@ class ContentController extends DashboardController
         $data['name'] = $type;
         try {
             DB::beginTransaction();
-            if (!$model = Content::where('name',$type)->first()){
-                return abort(404,'Not Found');
+            if (!$model = Content::where('name', $type)->first()) {
+                return abort(404, 'Not Found');
             }
             $model->update($data);
-        } catch (\Exception $exception){
+        } catch (\Exception $exception) {
             DB::rollBack();
             return response()->json([
                 'message' => $exception->getMessage()
-            ],500);
+            ], 500);
         }
         DB::commit();
         return response()->json([
