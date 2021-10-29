@@ -16,13 +16,12 @@
     </div>
 </header>
 
-<header>
+<header class="bg-white mb-2 relative top-0 w-full z-50" id="header" >
     <nav class="container flex items-center justify-between py-7 space-x-10 relative">
         <a href="{{route('home',['lang' => $lang])}}">
             <img src="{{ asset('assets/img/logo.png') }}" alt="" class="h-10 w-auto">
         </a>
-        <div id="nav-menu" class="
-                flex-1 flex lg:justify-between lg:relative lg:flex-row lg:py-0 lg:px-0 lg:right-0
+        <div id="nav-menu" class="flex-1 flex lg:justify-between lg:relative lg:flex-row lg:py-0 lg:px-0 lg:right-0
                 fixed z-10 right-0 top-0 bottom-0 flex-col p-5 bg-white transition duration-200 translate-x-full lg:translate-x-0">
             <ul class="flex flex-col lg:flex-row lg:space-x-8 order-last lg:order-none lg:space-y-0 space-y-10">
                 <li class="capitalize hover:text-secondary active:text-secondary"><a href="{{route('home',['lang' => $lang])}}"> {{__('general.home')}}</a></li>

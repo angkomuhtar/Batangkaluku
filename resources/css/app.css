@@ -4,10 +4,6 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;0,800;1,800&display=swap');
 
-
-.btn-sm-secondary{
-    @apply bg-white border border-secondary py-2 px-4 text-xs text-secondary rounded-md 
-}
 .swiper-container{
     z-index: 1;
     @apply relative list-none p-0 overflow-x-hidden
@@ -35,6 +31,9 @@
 
 .swiper-pagination-bullet-active{
     @apply opacity-100
+}
+.btn-sm-secondary{
+    @apply bg-white border border-secondary py-2 px-4 text-xs text-secondary rounded-md 
 }
 
 .header-title{
@@ -89,7 +88,7 @@
     @apply overflow-hidden transition-shadow duration-300 bg-white rounded shadow-sm
 }
 .card-article-img{
-    @apply object-cover w-full h-64
+    @apply object-cover w-full h-64 rounded-md
 }
 .card-article-category{
     @apply mb-3 text-xs font-semibold tracking-wide uppercase
@@ -137,4 +136,11 @@
 
 .pelayanan-content{
     @apply flex flex-col justify-center items-center space-y-4 py-10 text-center
+}
+
+.line-clamp{
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
 }

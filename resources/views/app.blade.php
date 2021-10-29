@@ -13,7 +13,7 @@
 <body class="font-opensans">
     @include('header')
 
-    <main class="space-y-20">
+    <main class="space-y-10 lg:space-y-20">
         @yield('main')
     </main>
 
@@ -103,6 +103,25 @@
                 $(".menu-side-header h3").toggleClass("hidden")
             })
         })
+
+        window.onscroll = function() {myFunction()};
+
+        // Get the header
+        var header = document.getElementById("header");
+
+        // Get the offset position of the navbar
+        var sticky = header.offsetTop;
+
+        // Add the sticky class to the header when you reach its scroll position. Remove "sticky" when you leave the scroll position
+        function myFunction() {
+        if (window.pageYOffset > sticky) {
+            header.classList.remove("relative");
+            header.classList.add("fixed");
+        } else {
+            header.classList.add("relative");
+            header.classList.remove("fixed");
+        }
+        }
     </script>
     @stack('add-script')
 
