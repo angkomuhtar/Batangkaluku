@@ -5,9 +5,9 @@
         <div class="swiper-container mySwiper">
             <div class="swiper-wrapper">
                 @foreach ($slider AS $row)
-                    <div class="swiper-slide">
+                    <a href="#" class="swiper-slide">
                         <img src="{{asset('storage/'.$row->image)}}" alt="">
-                    </div>
+                    </a>
                 @endforeach
             </div>
             <div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets">

@@ -44,14 +44,17 @@
                     <div class="rate">
                         <h6 class="footer-head">{{__('general.review_our_web')}}</h6>
                         <ul class="space-y-1">
-                            <li class="footer-list flex items-center"><input type="radio" name="feed" id="" class="mr-2">
-                                {{__('general.very_good')}}</li>
-                            <li class="footer-list flex items-center"><input type="radio" name="feed" id="" class="mr-2">
-                                {{__('general.good')}}</li>
-                            <li class="footer-list flex items-center"><input type="radio" name="feed" id="" class="mr-2">
-                                {{__('general.enough')}}</li>
-                            <li class="footer-list flex items-center"><input type="radio" name="feed" id="" class="mr-2">
-                                {{__('general.not_good')}}</li>
+                            <form action="">
+                                <li class="footer-list flex items-center"><input type="radio" name="feed" id="" class="mr-2">
+                                    {{__('general.very_good')}}</li>
+                                <li class="footer-list flex items-center"><input type="radio" name="feed" id="" class="mr-2">
+                                    {{__('general.good')}}</li>
+                                <li class="footer-list flex items-center"><input type="radio" name="feed" id="" class="mr-2">
+                                    {{__('general.enough')}}</li>
+                                <li class="footer-list flex items-center"><input type="radio" name="feed" id="" class="mr-2">
+                                    {{__('general.not_good')}}</li>
+                                <button type="submit" class="bg-secondary text-white text-xs font-semibold text-center px-2 py-1 rounded-lg mt-3" >Kirim</button>
+                            </form>
                         </ul>
                     </div>
                 </div>
@@ -117,9 +120,13 @@
         if (window.pageYOffset > sticky) {
             header.classList.remove("relative");
             header.classList.add("fixed");
+            header.classList.add("border-b");
+            header.classList.add("border-border");
         } else {
             header.classList.add("relative");
             header.classList.remove("fixed");
+            header.classList.remove("border-b");
+            header.classList.remove("border-border");
         }
         }
     </script>
