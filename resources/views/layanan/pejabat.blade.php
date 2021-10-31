@@ -11,8 +11,8 @@
         </div>
     </section>
 
-    <section class="section">
-        <div class="">
+    <section class="content">
+        <div class="hidden lg:block">
             @include('layanan.layanan-side')
         </div>
         <div class="col-span-3 space-y-10">

@@ -19,7 +19,7 @@
     @apply flex-shrink-0 w-full h-full relative 
 }
 .swiper-slide>img{
-    @apply w-full object-fill h-48 lg:h-banner
+    @apply w-full object-fill h-48 lg:h-full
 }
 .swiper-pagination{
     @apply w-full flex justify-center space-x-2 py-2 pt-4
@@ -99,6 +99,9 @@
 /* end card */
 .section{
     @apply container flex gap-10 pb-10
+}
+.content{
+    @apply container grid lg:grid-cols-4 gap-7
 }
 
 /* side menu */

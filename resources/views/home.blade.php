@@ -250,7 +250,7 @@
 
         <div class="grid grid-cols-4 lg:grid-cols-8 gap-5 justify-items-center lg:px-36">
             
-            <a href="" class="py-10 w-full border border-border rounded-sm col-span-2 flex justify-center">
+            <a href="http://bbpp-batangkaluku-ppid.pertanian.go.id/" target="_blank" class="py-10 w-full border border-border rounded-sm col-span-2 flex justify-center">
                 <div class="flex flex-col justify-center justify-items-center items-center">
                     <svg class="w-10 lg:w-20" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M73.3594 5H6.64059C5.23227 5 4 6.23227 4 7.64059V71.7188C4 73.1271 5.23227 74.3594 6.64059 74.3594H73.3594C74.7677 74.3594 76 73.1271 76 71.7188V7.64059C76 6.23227 74.9438 5 73.3594 5ZM70.7188 69.0782H9.28117V24.0122H70.7188V69.0782ZM70.7188 18.7311H9.28117V10.2812H70.7188V18.7311Z" fill="#BFBFBF"/>
@@ -264,7 +264,7 @@
                     <h5 class="text-darkGrey text-sm lg:text-xl font-semibold text-center mt-5">PPID</h5>
                 </div>
             </a>
-            <a href="" class="py-10 w-full border border-border rounded-sm col-span-2 flex justify-center">
+            <a href="https://epersonal.pertanian.go.id/login/" target="_blank" class="py-10 w-full border border-border rounded-sm col-span-2 flex justify-center">
                 <div class="flex flex-col justify-center justify-items-center items-center">
                     <svg class="w-10 lg:w-20" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M40.0915 23.7523C45.448 23.7523 49.9676 19.4001 49.9676 13.8762C49.9676 8.51961 45.6154 4 40.0915 4C34.5675 4 30.3827 8.51961 30.3827 14.0436C30.3827 19.4001 34.7349 23.7523 40.0915 23.7523ZM40.0915 9.02178C42.7698 9.02178 45.1133 11.1979 45.1133 14.0436C45.1133 16.7219 42.9371 19.0653 40.0915 19.0653C37.2458 19.0653 35.0697 16.8892 35.0697 14.0436C35.0697 11.1979 37.4132 9.02178 40.0915 9.02178Z" fill="#BFBFBF"/>
@@ -275,7 +275,7 @@
             </a>
             
 
-            <a href="" class="py-10 w-full border border-border rounded-sm col-span-2 flex justify-center">
+            <a href="#" onClick="alert('Sementara tidak dapat diakses')" class="py-10 w-full border border-border rounded-sm col-span-2 flex justify-center">
                 <div class="flex flex-col justify-center justify-items-center items-center">
                     <svg class="w-10 lg:w-20" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M39.6727 39.5636C46.2181 39.5636 51.4545 34.3273 51.4545 27.7818C51.4545 21.2364 46.2181 16 39.6727 16C33.1272 16 27.8909 21.2364 27.8909 27.7818C27.8909 34.3273 33.2909 39.5636 39.6727 39.5636ZM39.6727 20.9091C43.4363 20.9091 46.5454 24.0182 46.5454 27.7818C46.5454 31.5455 43.4363 34.6545 39.6727 34.6545C35.909 34.6545 32.8 31.5455 32.8 27.7818C32.8 24.0182 35.909 20.9091 39.6727 20.9091Z" fill="#BFBFBF"/>
@@ -287,7 +287,7 @@
             </a>
             
 
-            <a href="" class="py-10 w-full border border-border rounded-sm col-span-2 flex justify-center">
+            <a href="http://lib.bppsdmp.pertanian.go.id/kaluku/" target="_blank" class="py-10 w-full border border-border rounded-sm col-span-2 flex justify-center">
                 <div class="flex flex-col justify-center justify-items-center items-center">
                     <svg class="w-10 lg:w-20" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M49.5544 19.3267C49.5544 17.901 48.3069 16.6535 46.8812 16.6535H27.099C25.6732 16.6535 24.4257 17.901 24.4257 19.3267C24.4257 20.7525 25.6732 22 27.099 22H46.8812C48.3069 22 49.5544 20.7525 49.5544 19.3267Z" fill="#BFBFBF"/>
@@ -298,7 +298,7 @@
                 </div>
             </a>
 
-            <a href="" class="py-10 w-full border border-border rounded-sm col-span-2 lg:col-start-2 flex justify-center">
+            <a href="http://www.evalap-bbppbatangkaluku.com/FormLogin" target="_blank" class="py-10 w-full border border-border rounded-sm col-span-2 lg:col-start-2 flex justify-center">
                 <div class="flex flex-col justify-center justify-items-center items-center">
                     <svg class="w-10 lg:w-20" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M52.3462 59.0385C50.9615 59.0385 49.75 60.25 49.75 61.6346V70.8077H12.1923V9.19231H49.75V20.4423C49.75 21.8269 50.9615 23.0385 52.3462 23.0385C53.7308 23.0385 54.9423 21.8269 54.9423 20.4423V6.59615C54.9423 5.21154 53.7308 4 52.3462 4H9.59615C8.21154 4 7 5.21154 7 6.59615V73.4038C7 74.7885 8.21154 76 9.59615 76H52.3462C53.7308 76 54.9423 74.7885 54.9423 73.4038V61.6346C54.9423 60.25 53.7308 59.0385 52.3462 59.0385Z" fill="#BFBFBF"/>
@@ -312,7 +312,7 @@
                 </div>
             </a>
 
-            <a href="" class="py-10 w-full border border-border rounded-sm col-span-2 flex justify-center">
+            <a href="https://batangkalukuagrilearning.com/" target="_blank" class="py-10 w-full border border-border rounded-sm col-span-2 flex justify-center">
                 <div class="flex flex-col justify-center justify-items-center items-center">
                     <svg class="w-10 lg:w-20" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M63.7137 35.3985C62.2504 35.3985 60.9701 36.6617 60.9701 38.1053V70.5865H10.4873V16.6316H46.8861C48.3494 16.6316 49.6297 15.3684 49.6297 13.9248C49.6297 12.4812 48.3494 11.218 46.8861 11.218H7.74363C6.28036 11.218 5 12.3008 5 13.9248V73.2932C5 74.7368 6.28036 76 7.74363 76H63.7137C65.177 76 66.4573 74.7368 66.4573 73.2932V38.1053C66.4573 36.6617 65.177 35.3985 63.7137 35.3985Z" fill="#BFBFBF"/>
@@ -324,7 +324,7 @@
                 </div>
             </a>
 
-            <a href="" class="py-10 w-full border border-border rounded-sm col-span-2 col-start-2 lg:col-start-auto flex justify-center">
+            <a href="https://seiramabatangkaluku.com/" target="_blank" class="py-10 w-full border border-border rounded-sm col-span-2 col-start-2 lg:col-start-auto flex justify-center">
                 <div class="flex flex-col justify-center justify-items-center items-center">
                     <svg class="w-10 lg:w-20" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M73.3824 54.2168L58.8738 39.7082C55.1123 35.9467 49.2014 35.9467 45.4399 39.7082L44.7234 40.4247L39.7081 35.2302L40.4246 34.5137C44.1861 30.7522 44.1861 24.8413 40.4246 21.0798L25.9159 6.57121C22.1545 2.80972 16.2435 2.80972 12.482 6.57121L6.57112 12.8404C2.80963 16.6019 2.80963 22.5128 6.57112 26.2743L21.0797 40.7829C24.8412 44.5444 30.7522 44.5444 34.5136 40.7829L36.1257 39.1708L41.3202 44.3653L39.7081 45.9773C35.9466 49.7388 35.9466 55.6497 39.7081 59.4112L54.2167 73.9199C57.9782 77.6814 63.8891 77.6814 67.6506 73.9199L73.7407 67.8298C77.1439 63.8892 77.1439 57.7992 73.3824 54.2168ZM30.2148 25.7369C29.1401 24.6622 27.528 24.6622 26.4533 25.7369C25.3786 26.8116 25.3786 28.4237 26.4533 29.4984L32.1851 35.2302L30.573 36.8423C28.961 38.4543 26.4533 38.4543 24.8412 36.8423L10.3326 22.3337C8.89966 20.9007 8.89966 18.2139 10.5117 16.6019L16.4227 10.6909C18.0347 9.07887 20.5424 9.07887 22.1545 10.6909L36.6631 25.1996C38.2751 26.8116 38.2751 29.3193 36.6631 30.9314L35.9466 31.6478L30.2148 25.7369ZM69.6209 63.7101L63.5309 69.8001C61.9188 71.4122 59.4112 71.4122 57.7991 69.8001L43.2905 55.2915C41.6784 53.6794 41.6784 51.1718 43.2905 49.5597L44.9025 47.9476L50.6343 53.6794C51.7091 54.7542 53.3211 54.7542 54.3958 53.6794C55.4705 52.6047 55.4705 50.9927 54.3958 49.9179L48.664 44.1861L49.3805 43.4697C50.9926 41.8576 53.5002 41.8576 55.1123 43.4697L69.6209 57.9783C71.233 59.5904 71.233 62.098 69.6209 63.7101Z" fill="#BFBFBF"/>

@@ -11,11 +11,11 @@
         </div>
     </section>
 
-    <section class="section">
-        <div class="">
+    <section class="content">
+        <div class="hidden lg:block">
             @include('lembaga.lembaga-side')
         </div>
-        <div class="col-span-3 space-y-10">
+        <div class=" lg:col-span-3 space-y-10">
             <div class="space-y-3">
             {!! $lang == 'en' ? ($data->content_en ?? $data->content) : $data->content !!}
             </div>

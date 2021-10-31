@@ -11,11 +11,12 @@
         </div>
     </section>
 
-    <section class="section">
-        <div class="">
-            @include('artikel.artikel-side')
+    <section class="content">
+        <div class="hidden lg:block">
+            @include('lembaga.artikel-side')
         </div>
-        <div class="lg:col-span-3 grid grid-cols-1 lg:grid-cols-1 gap-6">
+        <div class=" lg:col-span-3 space-y-10">
+        <!-- <div class="lg:col-span-3 grid grid-cols-1 lg:grid-cols-1 gap-6"> -->
                 <div class="rounded-lg">
                     <img class="rounded-sm w-full h-auto" src="{{asset('storage/'.$data->image)}}" alt="{{$data->title}}">
                     <p class="text-secondary font-semibold text-xs mt-5 mb-1">{{__('general.artikel_'.$data->type)}}</p>

@@ -11,11 +11,11 @@
         </div>
     </section>
 
-    <section class="section">
-        <div class="">
+    <section class="content">
+        <div class="hidden lg:block">
             @include('satker.side')
         </div>
-        <div class="col-span-3 space-y-10">
+        <div class="lg:col-span-3 space-y-10">
             <h3 class="text-header-3">
                 {{$lang == 'en' ? $data->title_en ?? $data->title : $data->title}}
             </h3>

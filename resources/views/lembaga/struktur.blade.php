@@ -11,12 +11,15 @@
         </div>
     </section>
 
-    <section class="section">
-        <div class="">
+    <section class="content">
+        <div class="hidden lg:block">
             @include('lembaga.lembaga-side')
         </div>
-        <div class="lg:col-span-3 space-y-10">
+        <div class=" lg:col-span-3 space-y-10">
             <div class="space-y-3">
+                <div class="grid justify-items-center">
+                    <img src="{{asset('storage/sdm/struktur.jpeg')}}" class="w-full" alt="">
+                </div>
                 {!! $lang == 'en' ? ($data->content_en ?? $data->content) : $data->content !!}
             </div>
         </div>

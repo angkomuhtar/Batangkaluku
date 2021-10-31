@@ -11,8 +11,8 @@
         </div>
     </section>
 
-    <section class="section">
-        <div class="">
+    <section class="content">
+        <div class="hidden lg:block">
             @include('artikel.artikel-side')
         </div>
         <div class="lg:col-span-3 grid grid-cols-1 lg:grid-cols-2 gap-6">

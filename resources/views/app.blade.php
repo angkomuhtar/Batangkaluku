@@ -67,6 +67,20 @@
                             <li><a href="#" class="footer-list">+0411 - 866396</a></li>
                             <li><a href="#" class="footer-list">infobbpp@pertanian.go.id</a></li>
                         </ul>
+                        <div class="flex gap-5 mt-5">
+                            <a href="https://web.facebook.com/bbppbatangkaluku.pertanian/?_rdc=1&_rdr" target="_blank" class="text-white">
+                                <i class="fab fa-facebook-square fa-2x"></i>
+                            </a>
+                            <a href="https://twitter.com/@bbpp_bk" target="_blank" class="text-white">
+                                <i class="fab fa-twitter-square fa-2x"></i>
+                            </a>
+                            <a href="https://instagram.com/bbpp.batangkaluku?utm_medium=copy_link" target="_blank" class="text-white">
+                                <i class="fab fa-instagram-square fa-2x"></i>
+                            </a>
+                            <a href="https://www.youtube.com/channel/UCx9t3TUybwKjPEhD26ONOsA" target="_blank" class="text-white">
+                                <i class="fab fa-youtube-square fa-2x"></i>
+                            </a>
+                        </div>
                     </div>
                     <div class="link">
                         <h6 class="footer-head">{{__('general.visitor')}}</h6>
@@ -106,6 +120,11 @@
                 $(".menu-items").toggleClass("hidden")
                 $(".menu-side").toggleClass("py-5")
                 $(".menu-side-header h3").toggleClass("hidden")
+            })
+
+            $(".menu-collapse").click(function(){
+                $(this).siblings().toggle("fast");
+                $(this).children("span").children("svg").toggleClass("transform -rotate-90");
             })
         })
 

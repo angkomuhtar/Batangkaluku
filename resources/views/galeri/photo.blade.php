@@ -11,11 +11,11 @@
         </div>
     </section>
 
-    <section class="section">
-        <div class="">
+    <section class="content">
+        <div class="hidden lg:block">
             @include('galeri.side')
         </div>
-        <div class="w-full space-y-10 px-4 pb-10">
+        <div class="lg:col-span-3 px-4 pb-10">
             <h3 class="text-header-2 text-dark"> {{__('general.album_photo')}}</h3>
             <div class="grid lg:grid-cols-3 gap-6">
                 @foreach ($data AS $row)
