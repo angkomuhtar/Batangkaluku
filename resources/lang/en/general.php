@@ -49,5 +49,6 @@ return [
     'rank_class' => 'Rank / Class',
     'position' => 'Position',
     'service_notice' => 'Service Notice',
-    'thanks_for_rating' => 'Thank You for rating our website'
+    'thanks_for_rating' => 'Thank You for rating our website',
+    'attachment' => 'Attachment'
 ];

@@ -51,6 +51,7 @@ Route::group(['middleware' => 'visitor-counter'], function () {
     Route::get('layanan',function () use ($locale){
         return redirect()->route('layanan',['lang' => $locale,'service' => 'sop_balai']);
     });
+    Route::get('layanan/info_pelatihan/{id}',[LayananController::class,'detail'])->name('layanan.pelatihan.detail');
     Route::group(['prefix' => 'layanan/{service}'], function () {
         Route::get('',[LayananController::class,'index'])->name('layanan');
     });

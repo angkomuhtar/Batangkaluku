@@ -25,6 +25,10 @@
                     <p class="mb-3 font-normal text-sm text-darkGrey">
                         {!! $lang == 'en' ? ($data->content_en ?? $data->content) : $data->content !!}
                     </p>
+                    @if ($data->attachment)
+                        <p class="text-info"><i class="fas fa-file mr-2"> </i><a
+                                href="{{asset('storage/'.$data->attachment)}}" download>{{__('general.attachment')}}</a></p>
+                    @endif
                 </div>
             <hr>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

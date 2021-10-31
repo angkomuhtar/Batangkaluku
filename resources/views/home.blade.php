@@ -196,11 +196,11 @@
                 @foreach($info_pelatihan AS $row)
                     <div class="swiper-slide">
                         <div class="rounded-sm">
-                            <a href="{{route('layanan',['service' => 'info_pelatihan' , 'lang' => $lang])}}">
+                            <a href="{{route('layanan.pelatihan.detail',['id' => $row->id ,'lang' => $lang])}}">
                                 <img class="rounded-sm w-auto h-full" src="{{asset('storage/'.$row->image)}}" alt="">
                                 <h3 class="font-semibold text-xl mb-3">{{$lang == 'en' ? ($row->title_en ?? $row->title) : $row->title}}</h3>
                                 <!-- <p class="mb-3 font-normal text-sm text-darkGrey">{{$row->desc_str}}...</p> -->
-                                <p class="mb-3 font-normal text-xs text-darkLight">{{tanggal($row->date)}}</p>
+                                <p class="mb-3 font-normal text-xs text-darkLight">{{tanggal($row->created_at)}}</p>
                             </a>
                         </div>
                     </div>

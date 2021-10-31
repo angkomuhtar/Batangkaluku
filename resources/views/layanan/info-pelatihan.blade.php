@@ -33,6 +33,7 @@
                 </div>
                 @foreach($training AS $row)
                     <div class="rounded-sm">
+                        <a href="{{route('layanan.pelatihan.detail',['id' => $row->id ,'lang' => $lang])}}">
                         <img class="rounded-sm w-full h-auto" src="{{asset('storage/'.$row->image)}}" alt="{{$row->title}}">
                         <div class="py-4 grid gap-3">
                             <h3 class="text-subttile-2">{{$lang == 'en' ? ($row->title_en ?? $row->title) : $row->title }}</h3>
@@ -40,6 +41,7 @@
                             <p class="text-info"><i class="far fa-clock mr-2"> </i>{{$row->location}}</p>
                             <p class="text-info"><i class="fas fa-map-marked-alt mr-2"> </i>{{$row->time_start}} - {{$row->time_end ?? __('general.finish')}}</p>
                         </div>
+                        </a>
                     </div>
 
                 @endforeach

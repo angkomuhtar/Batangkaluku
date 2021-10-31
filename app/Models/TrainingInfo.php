@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $title
  * @property string $image
  * @property string $title_en
+ * @property string $attachment
  * @property string $description
  * @property string $description_en
  * @property string $date
@@ -41,6 +42,8 @@ class TrainingInfo extends Model
     /**
      * @var array
      */
-    protected $fillable = ['image', 'title', 'title_en', 'description', 'description_en', 'date', 'time_start', 'time_end', 'location', 'embed', 'is_active', 'user_create', 'user_update', 'created_at', 'updated_at'];
+    protected $fillable = ['image',
+        'attachment',
+        'title', 'title_en', 'description', 'description_en', 'date', 'time_start', 'time_end', 'location', 'embed', 'is_active', 'user_create', 'user_update', 'created_at', 'updated_at'];
 
 }

@@ -49,5 +49,6 @@ return [
     'rank_class' => 'Pangkat / Golongan',
     'position' => 'Jabatan',
     'service_notice' => 'Maklumat Pelayanan',
-    'thanks_for_rating' => 'Terimakasih telah me rating website kami'
+    'thanks_for_rating' => 'Terimakasih telah me rating website kami',
+    'attachment' => 'Lampiran'
 ];

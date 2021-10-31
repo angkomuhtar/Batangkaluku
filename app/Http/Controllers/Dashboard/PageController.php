@@ -261,11 +261,16 @@ class PageController extends DashboardController
             'time_end' => '',
             'location' => 'required',
             'embed' => '',
-            'is_active' => 'boolean|required'
+            'is_active' => 'boolean|required',
+            'attachment' => 'file'
         ]);
         if ($data['image']) {
             $ext = $request->file('image')->getClientOriginalExtension();
             $data['image'] = $request->file('image')->storeAs($this->image_path, $data['title'] . '_' . date('YmdHis') . '.' . $ext, 'public');
+        }
+        if (isset($data['attachment'])){
+            $ext = $request->file('attachment')->getClientOriginalExtension();
+            $data['attachment'] = $request->file('attachment')->storeAs($this->attachment_path, $data['title'] . '_' . date('YmdHis') . '.' . $ext, 'public');
         }
         try {
             DB::beginTransaction();
@@ -296,11 +301,16 @@ class PageController extends DashboardController
             'time_end' => '',
             'location' => 'required',
             'embed' => '',
-            'is_active' => 'boolean|required'
+            'is_active' => 'boolean|required',
+            'attachment' => 'file'
         ]);
         if (isset($data['image'])) {
             $ext = $request->file('image')->getClientOriginalExtension();
             $data['image'] = $request->file('image')->storeAs($this->image_path, $data['title'] . '_' . date('YmdHis') . '.' . $ext, 'public');
+        }
+        if (isset($data['attachment'])){
+            $ext = $request->file('attachment')->getClientOriginalExtension();
+            $data['attachment'] = $request->file('attachment')->storeAs($this->attachment_path, $data['title'] . '_' . date('YmdHis') . '.' . $ext, 'public');
         }
         try {
             DB::beginTransaction();
