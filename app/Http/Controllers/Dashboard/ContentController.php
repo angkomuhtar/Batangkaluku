@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 
 class ContentController extends DashboardController
 {
+    protected $image_path = 'konten';
     public function __construct()
     {
         parent::__construct();
@@ -33,6 +34,9 @@ class ContentController extends DashboardController
         $title = 'BBPP Batangkaluku - Edit Konten ' . $data->name_str;
         $action = route('dashboard.konten.edit', $type);
         $method = 'put';
+        if ($type == 'struktur_organisasi'){
+            return view('admin.pages.konten.form_image', compact('breadcrumbs', 'title', 'data', 'action', 'method'));
+        }
         return view('admin.pages.konten.form', compact('breadcrumbs', 'title', 'data', 'action', 'method'));
     }
 
@@ -41,12 +45,18 @@ class ContentController extends DashboardController
         $data = $request->validate([
             'content' => 'required',
             'content_en' => '',
+            'is_image' => ''
         ]);
         $data['name'] = $type;
         try {
             DB::beginTransaction();
             if (!$model = Content::where('name', $type)->first()) {
                 return abort(404, 'Not Found');
+            }
+            if ($type == 'struktur_organisasi'){
+                $ext = $request->file('content')->getClientOriginalExtension();
+                $data['content'] = $request->file('content')->storeAs($this->image_path, 'sturktur_organisasi' . date('YmdHis') . '.' . $ext, 'public');
+                $data['content_en'] = $data['content'];
             }
             $model->update($data);
         } catch (\Exception $exception) {

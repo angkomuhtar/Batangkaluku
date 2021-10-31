@@ -5,7 +5,7 @@
         <div class="swiper-container mySwiper">
             <div class="swiper-wrapper">
                 @foreach ($slider AS $row)
-                    <a href="#" class="swiper-slide">
+                    <a href="{{$row->url ?? '#'}}" class="swiper-slide">
                         <img src="{{asset('storage/'.$row->image)}}" alt="">
                     </a>
                 @endforeach
@@ -193,15 +193,14 @@
         </h2>
         <div class="swiper-container diklat">
             <div class="swiper-wrapper">
-                @foreach($news_pelatihan AS $row)
+                @foreach($info_pelatihan AS $row)
                     <div class="swiper-slide">
                         <div class="rounded-sm">
-                            <a href="{{route('artikel.detail',['title' => $row->title_str, 'id' => $row->id,'type' => $row->type, 'lang' => $lang])}}">
+                            <a href="{{route('layanan',['service' => 'info_pelatihan' , 'lang' => $lang])}}">
                                 <img class="rounded-sm w-auto h-full" src="{{asset('storage/'.$row->image)}}" alt="">
-                                <p class="text-secondary font-semibold text-xs mt-5 mb-1">{{__('general.artikel_'.$row->type)}}</p>
                                 <h3 class="font-semibold text-xl mb-3">{{$lang == 'en' ? ($row->title_en ?? $row->title) : $row->title}}</h3>
                                 <!-- <p class="mb-3 font-normal text-sm text-darkGrey">{{$row->desc_str}}...</p> -->
-                                <p class="mb-3 font-normal text-xs text-darkLight">{{tanggal($row->published_time)}}</p>
+                                <p class="mb-3 font-normal text-xs text-darkLight">{{tanggal($row->date)}}</p>
                             </a>
                         </div>
                     </div>
@@ -249,7 +248,7 @@
         </h2>
 
         <div class="grid grid-cols-4 lg:grid-cols-8 gap-5 justify-items-center lg:px-36">
-            
+
             <a href="http://bbpp-batangkaluku-ppid.pertanian.go.id/" target="_blank" class="py-10 w-full border border-border rounded-sm col-span-2 flex justify-center">
                 <div class="flex flex-col justify-center justify-items-center items-center">
                     <svg class="w-10 lg:w-20" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -273,7 +272,7 @@
                     <h5 class="text-darkGrey text-sm lg:text-xl font-semibold text-center mt-5">E-Personal</h5>
                 </div>
             </a>
-            
+
 
             <a href="#" onClick="alert('Sementara tidak dapat diakses')" class="py-10 w-full border border-border rounded-sm col-span-2 flex justify-center">
                 <div class="flex flex-col justify-center justify-items-center items-center">
@@ -285,7 +284,7 @@
                     <h5 class="text-darkGrey text-sm lg:text-xl font-semibold text-center mt-5">e-p4s</h5>
                 </div>
             </a>
-            
+
 
             <a href="http://lib.bppsdmp.pertanian.go.id/kaluku/" target="_blank" class="py-10 w-full border border-border rounded-sm col-span-2 flex justify-center">
                 <div class="flex flex-col justify-center justify-items-center items-center">
@@ -333,7 +332,7 @@
                 </div>
             </a>
 
-            
+
 
         </div>
 

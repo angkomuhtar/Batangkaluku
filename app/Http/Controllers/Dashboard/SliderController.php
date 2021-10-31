@@ -68,6 +68,7 @@ class SliderController extends DashboardController
             'text_header_en' => '',
             'text_content_en' => '',
             'order_id' => '',
+            'url' => '',
             'is_active' => 'boolean|required'
         ]);
         if ($data['image']) {
@@ -98,6 +99,7 @@ class SliderController extends DashboardController
             'text_header_en' => '',
             'text_content_en' => '',
             'order_id' => '',
+            'url' => '',
             'is_active' => 'boolean|required'
         ]);
         if (isset($data['image'])) {

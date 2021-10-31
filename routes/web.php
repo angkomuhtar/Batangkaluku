@@ -32,7 +32,7 @@ Route::group(['middleware' => 'visitor-counter'], function () {
     $locale = request()->query('lang', 'id');
     app()->setLocale($locale);
     Route::get('', [HomeController::class, 'index'])->name('home');
-
+    Route::post('rate',[HomeController::class,'rate'])->name('rate');
     Route::group(['prefix' => 'lembaga'], function () use ($locale) {
         Route::get('',function () use ($locale){
             return redirect()->route('lembaga.tentang',['lang' => $locale]);
@@ -165,5 +165,6 @@ Route::group(['prefix' => 'dashboard'], function () {
 });
 Route::group(['prefix' => 'ajax'], function () {
     Route::get('covid', [DashboardController::class, 'getDataCovid'])->name('ajax.covid');
+    Route::get('rating', [DashboardController::class, 'getRating'])->name('ajax.rating');
 });
 

@@ -44,15 +44,22 @@
                     <div class="rate">
                         <h6 class="footer-head">{{__('general.review_our_web')}}</h6>
                         <ul class="space-y-1">
-                            <form action="" class="space-y-1">
-                                <li class="footer-list flex items-center"><input type="radio" name="feed" id="" class="mr-2">
+                            @php
+                                $rate = \App\Models\Rating::where('id_visitor',session('unique_id'))->first();
+                            @endphp
+                            <form action="{{route('rate')}}" method="POST" class="space-y-1">
+                                @csrf
+                                <li class="footer-list flex items-center"><input type="radio" name="rate" id="" value="4" {{optional($rate)->rate == 4 ? 'checked' : ''}} class="mr-2" required>
                                     {{__('general.very_good')}}</li>
-                                <li class="footer-list flex items-center"><input type="radio" name="feed" id="" class="mr-2">
+                                <li class="footer-list flex items-center"><input type="radio" name="rate" id="" value="3" {{optional($rate)->rate == 3 ? 'checked' : ''}} class="mr-2">
                                     {{__('general.good')}}</li>
-                                <li class="footer-list flex items-center"><input type="radio" name="feed" id="" class="mr-2">
+                                <li class="footer-list flex items-center"><input type="radio" name="rate" id="" value="2" {{optional($rate)->rate == 2 ? 'checked' : ''}} class="mr-2">
                                     {{__('general.enough')}}</li>
-                                <li class="footer-list flex items-center"><input type="radio" name="feed" id="" class="mr-2">
+                                <li class="footer-list flex items-center"><input type="radio" name="rate" id="" value="1" {{optional($rate)->rate == 1 ? 'checked' : ''}} class="mr-2">
                                     {{__('general.not_good')}}</li>
+                                @if (session()->has('rate_message'))
+                                <li class="footer-list flex items-center">{{__('general.thanks_for_rating')}}</li>
+                                @endif
                                 <li class="footer-list flex items-center">
                                     <button type="submit" class="bg-secondary text-white text-xs font-semibold text-center px-2 py-1 rounded-lg mt-5" >Kirim</button>
                                 </li>
@@ -109,7 +116,7 @@
             $("#open-menu").click(function(){
                 $("#nav-menu").toggleClass("translate-x-full").toggleClass("translate-x-0")
             })
-            
+
             $("#close-menu").click(function(){
                 $("#nav-menu").toggleClass("translate-x-0").toggleClass("translate-x-full")
                 // $("#nav-menu").toggleClass("right-0").toggleClass("right-full")

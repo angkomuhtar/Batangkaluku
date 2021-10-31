@@ -17,10 +17,15 @@
         </div>
         <div class=" lg:col-span-3 space-y-10">
             <div class="space-y-3">
-                <div class="grid justify-items-center">
-                    <img src="{{asset('storage/sdm/struktur.jpeg')}}" class="w-full" alt="">
-                </div>
-                {!! $lang == 'en' ? ($data->content_en ?? $data->content) : $data->content !!}
+                @if ($data->is_image)
+                    <div class="grid justify-items-center">
+                        <img
+                            src="{{asset('storage/'.($lang == 'en' ? ($data->content_en ?? $data->content) : $data->content))}}"
+                            class="w-full" alt="">
+                    </div>
+                @else
+                    {!! $lang == 'en' ? ($data->content_en ?? $data->content) : $data->content !!}
+                @endif
             </div>
         </div>
     </section>

@@ -48,5 +48,6 @@ return [
     'officer_name' => 'Officer Name',
     'rank_class' => 'Rank / Class',
     'position' => 'Position',
-    'service_notice' => 'Service Notice'
+    'service_notice' => 'Service Notice',
+    'thanks_for_rating' => 'Thank You for rating our website'
 ];

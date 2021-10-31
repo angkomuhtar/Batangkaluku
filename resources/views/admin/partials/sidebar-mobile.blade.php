@@ -181,6 +181,13 @@
                     </div>
                     <span>Keuangan</span></a>
             </li>
+            <li class="{{str_contains(url()->current(),'page/layanan_dan_informasi/aset') ? 'active' : ''}}">
+                <a href="{{route('dashboard.page.edit',['type' => 'layanan_dan_informasi','name' => 'aset'])}}">
+                    <div class="icon-w">
+                        <div class="os-icon os-icon-delivery-box-2"></div>
+                    </div>
+                    <span>Aset</span></a>
+            </li>
             <li class="sub-header">
                 <span>Satuan Kerja</span>
             </li>

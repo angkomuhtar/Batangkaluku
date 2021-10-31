@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 use App\Models\Content;
+use App\Models\Rating;
 use App\Models\RouteVisitor;
 use App\Models\Slider;
+use App\Models\TrainingInfo;
+use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
@@ -31,7 +34,25 @@ class HomeController extends Controller
             ->orderBy('published_time', 'desc')
             ->take(6)
             ->get();
+        $info_pelatihan = TrainingInfo::where('is_active',1)
+            ->latest()
+            ->take(3)
+            ->get();
         $visitor = RouteVisitor::get();
-        return view('home', compact('slider', 'news', 'news_pertanian', 'news_pelatihan', 'lang', 'maklumat', 'visitor'));
+        return view('home', compact('slider', 'news', 'news_pertanian', 'news_pelatihan', 'lang', 'maklumat', 'visitor','info_pelatihan'));
+    }
+
+    public function rate(Request $request){
+        $id = session('unique_id');
+        if (!$rating = Rating::where('id_visitor',$id)->first()){
+            Rating::create([
+                'id_visitor' => $id,
+                'rate' => $request->rate
+            ]);
+        } else {
+            $rating->rate = $request->rate;
+            $rating->save();
+        }
+        return back()->with('rate_message','thanks_for_rating');
     }
 }

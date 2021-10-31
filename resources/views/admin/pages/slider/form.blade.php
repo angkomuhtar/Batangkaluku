@@ -85,6 +85,18 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <label for=""> Url </label>
+                    <input class="form-control"
+                          name="url"
+                          data-error="url is required"
+                          placeholder="Url Slider"
+                          value="{{$data->url ?? old('url')}}"
+                          type="text"/>
+                    <div class="help-block form-text with-errors form-control-feedback">
+
+                    </div>
+                </div>
+                <div class="form-group">
                     <label for=""> Urutan </label>
                     <input class="form-control"
                           name="order_id"
