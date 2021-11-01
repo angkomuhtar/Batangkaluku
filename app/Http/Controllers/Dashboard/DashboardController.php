@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Models\HumanResources;
 use App\Models\Rating;
 use GuzzleHttp\Client;
 
@@ -51,4 +52,8 @@ class DashboardController extends Controller
         return response()->json($data);
     }
 
+    public function getProfile($id){
+        $profile = HumanResources::with('awards')->find($id);
+        return response()->json($profile);
+    }
 }

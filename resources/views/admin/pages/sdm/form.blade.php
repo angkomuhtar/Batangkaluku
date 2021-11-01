@@ -113,6 +113,88 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <label for=""> Jenis Kelamin *</label>
+                    <select data-error="jenis kelamin is required" name="gender" class="form-control" required>
+                        <option value="">-- Pilih Jenis Kelamin --</option>
+                        <option value="m" {{$data->gender == 'm' ? 'selected' : ''}}>Laki-laki</option>
+                        <option value="f" {{$data->gender == 'f' ? 'selected' : ''}}>Perempuan</option>
+                    </select>
+                    <div class="help-block form-text with-errors form-control-feedback">
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for=""> Agama *</label>
+                    <select data-error="Agama is required" name="religion" class="form-control" required>
+                        <option value="">-- Pilih Agama --</option>
+                        <option value="Islam" {{$data->religion == 'islam' ? 'selected' : ''}}>Islam</option>
+                        <option value="Kristen" {{$data->religion == 'kristen' ? 'selected' : ''}}>Kristen</option>
+                        <option value="Protestan" {{$data->religion == 'protestan' ? 'selected' : ''}}>Protestan</option>
+                        <option value="Hindu" {{$data->religion == 'hindu' ? 'selected' : ''}}>Hindu</option>
+                        <option value="Budha" {{$data->religion == 'budha' ? 'selected' : ''}}>Budha</option>
+                        <option value="Konghucu" {{$data->religion == 'konghucu' ? 'selected' : ''}}>Konghucu</option>
+                        <option value="Lain-lain" {{$data->religion == 'lain-lain' ? 'selected' : ''}}>Lainnya</option>
+                    </select>
+                    <div class="help-block form-text with-errors form-control-feedback">
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for=""> Pendidikan Terakhir *</label>
+                    <select data-error="Pendidikan Terakhir is required" name="last_edu" class="form-control" required>
+                        <option value="">-- Pilih Pendidikan Terakhir --</option>
+                        <option value="S3" {{$data->last_edu == 's3' ? 'selected' : ''}}>S3</option>
+                        <option value="S2" {{$data->last_edu == 's2' ? 'selected' : ''}}>S2</option>
+                        <option value="S1" {{$data->last_edu == 's1' ? 'selected' : ''}}>S1</option>
+                        <option value="D3" {{$data->last_edu == 'd3' ? 'selected' : ''}}>D3</option>
+                        <option value="SMA" {{$data->last_edu == 'sma' ? 'selected' : ''}}>SMA</option>
+                        <option value="SMP" {{$data->last_edu == 'smp' ? 'selected' : ''}}>SMP</option>
+                        <option value="SD" {{$data->last_edu == 'sd' ? 'selected' : ''}}>SD</option>
+                        <option value="Lain-lain" {{$data->last_edu == 'lain-lain' ? 'selected' : ''}}>Lainnya</option>
+                    </select>
+                    <div class="help-block form-text with-errors form-control-feedback">
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for=""> Universitas / Perguruan Tinggi *</label>
+                    <input type="text" value="{{$data->univ}}" placeholder="Universitas / Perguruan Tinggi" data-error="Universitas / Perguruan Tinggi is required" name="univ" class="form-control" required/>
+                    <div class="help-block form-text with-errors form-control-feedback">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for=""> Fakultas / Jurusan *</label>
+                    <input type="text" value="{{$data->major}}" placeholder="Fakultas / Jurusan" data-error="Fakultas / Jurusan is required" name="major" class="form-control" required/>
+                    <div class="help-block form-text with-errors form-control-feedback">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for=""> Pangkat / Golongan *</label>
+                    <input type="text" value="{{$data->rank}}" placeholder="Pangkat / Golongan" data-error="Pangkat / Golongan is required" name="rank" class="form-control" required/>
+                    <div class="help-block form-text with-errors form-control-feedback">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for=""> Jabatan *</label>
+                    <input type="text" value="{{$data->department}}" placeholder="Jabatan" data-error="Jabatan is required" name="department" class="form-control" required/>
+                    <div class="help-block form-text with-errors form-control-feedback">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for=""> Email *</label>
+                    <input type="email" value="{{$data->email}}" placeholder="Email" data-error="Email is required" name="email" class="form-control" required/>
+                    <div class="help-block form-text with-errors form-control-feedback">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for=""> Penghargaan </label>
+                    @for ($i = 0; $i < 6; $i++)
+                    <input type="text" value="{{isset(optional($data)->awards[$i]) ? $data->awards[$i]->award : ''}}" placeholder="Penghargaan {{$i+1}}" name="award[]" class="form-control"/>
+                    @endfor
+                    <div class="help-block form-text with-errors form-control-feedback">
+                    </div>
+                </div>
+                <div class="form-group">
                     <label for=""> Urutan </label>
                     <input class="form-control"
                            name="order_id"

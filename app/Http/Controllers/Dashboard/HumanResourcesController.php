@@ -52,7 +52,7 @@ class HumanResourcesController extends DashboardController
         ];
         $breadcrumbs = $this->breadcrumbs;
         $title = 'BBPP Batangkaluku - Edit Sumber Daya Manusia';
-        if (!$data = HumanResources::find($id)) {
+        if (!$data = HumanResources::with('awards')->find($id)) {
             return abort(404, 'Not Found');
         }
         $action = route('dashboard.sdm.edit', $id);
@@ -73,7 +73,16 @@ class HumanResourcesController extends DashboardController
             'position_en' => '',
             'level_id' => 'required',
             'order_id' => 'required',
-            'is_active' => 'boolean|required'
+            'is_active' => 'boolean|required',
+            'gender' => '',
+            'religion' => '',
+            'last_edu' => '',
+            'univ' => '',
+            'major' => '',
+            'rank' => '',
+            'department' => '',
+            'email' => '',
+            'award' => 'array'
         ]);
         if ($data['image']) {
             $ext = $request->file('image')->getClientOriginalExtension();
@@ -81,7 +90,14 @@ class HumanResourcesController extends DashboardController
         }
         try {
             DB::beginTransaction();
-            HumanResources::create($data);
+            $model = HumanResources::create($data);
+            foreach ($data['award'] AS $award){
+                if ($award)
+                    $model->awards()->create([
+                        'human_resource_id' => $model->id,
+                        'award' => $award
+                    ]);
+            }
         } catch (\Exception $exception) {
             DB::rollBack();
             return response()->json([
@@ -105,7 +121,16 @@ class HumanResourcesController extends DashboardController
             'position_en' => '',
             'level_id' => 'required',
             'order_id' => 'required',
-            'is_active' => 'boolean|required'
+            'is_active' => 'boolean|required',
+            'gender' => '',
+            'religion' => '',
+            'last_edu' => '',
+            'univ' => '',
+            'major' => '',
+            'rank' => '',
+            'department' => '',
+            'email' => '',
+            'award' => 'array'
         ]);
         if (isset($data['image'])) {
             $ext = $request->file('image')->getClientOriginalExtension();
@@ -117,6 +142,14 @@ class HumanResourcesController extends DashboardController
                 return abort(404, 'Not Found');
             }
             $model->update($data);
+            $model->awards()->delete();
+            foreach ($data['award'] AS $award){
+                if ($award)
+                $model->awards()->create([
+                    'human_resource_id' => $id,
+                    'award' => $award
+                ]);
+            }
         } catch (\Exception $exception) {
             DB::rollBack();
             return response()->json([

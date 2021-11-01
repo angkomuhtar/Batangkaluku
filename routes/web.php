@@ -167,5 +167,6 @@ Route::group(['prefix' => 'dashboard'], function () {
 Route::group(['prefix' => 'ajax'], function () {
     Route::get('covid', [DashboardController::class, 'getDataCovid'])->name('ajax.covid');
     Route::get('rating', [DashboardController::class, 'getRating'])->name('ajax.rating');
+    Route::get('profile/{id}', [DashboardController::class, 'getProfile'])->name('ajax.profile');
 });
 
