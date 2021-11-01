@@ -127,13 +127,13 @@
                     <label for=""> Agama *</label>
                     <select data-error="Agama is required" name="religion" class="form-control" required>
                         <option value="">-- Pilih Agama --</option>
-                        <option value="Islam" {{$data->religion == 'islam' ? 'selected' : ''}}>Islam</option>
-                        <option value="Kristen" {{$data->religion == 'kristen' ? 'selected' : ''}}>Kristen</option>
-                        <option value="Protestan" {{$data->religion == 'protestan' ? 'selected' : ''}}>Protestan</option>
-                        <option value="Hindu" {{$data->religion == 'hindu' ? 'selected' : ''}}>Hindu</option>
-                        <option value="Budha" {{$data->religion == 'budha' ? 'selected' : ''}}>Budha</option>
-                        <option value="Konghucu" {{$data->religion == 'konghucu' ? 'selected' : ''}}>Konghucu</option>
-                        <option value="Lain-lain" {{$data->religion == 'lain-lain' ? 'selected' : ''}}>Lainnya</option>
+                        <option value="Islam" {{$data->religion == 'Islam' ? 'selected' : ''}}>Islam</option>
+                        <option value="Kristen" {{$data->religion == 'Kristen' ? 'selected' : ''}}>Kristen</option>
+                        <option value="Protestan" {{$data->religion == 'Protestan' ? 'selected' : ''}}>Protestan</option>
+                        <option value="Hindu" {{$data->religion == 'Hindu' ? 'selected' : ''}}>Hindu</option>
+                        <option value="Budha" {{$data->religion == 'Budha' ? 'selected' : ''}}>Budha</option>
+                        <option value="Konghucu" {{$data->religion == 'Konghucu' ? 'selected' : ''}}>Konghucu</option>
+                        <option value="Lain-lain" {{$data->religion == 'Lain-lain' ? 'selected' : ''}}>Lainnya</option>
                     </select>
                     <div class="help-block form-text with-errors form-control-feedback">
 
@@ -143,13 +143,13 @@
                     <label for=""> Pendidikan Terakhir *</label>
                     <select data-error="Pendidikan Terakhir is required" name="last_edu" class="form-control" required>
                         <option value="">-- Pilih Pendidikan Terakhir --</option>
-                        <option value="S3" {{$data->last_edu == 's3' ? 'selected' : ''}}>S3</option>
-                        <option value="S2" {{$data->last_edu == 's2' ? 'selected' : ''}}>S2</option>
-                        <option value="S1" {{$data->last_edu == 's1' ? 'selected' : ''}}>S1</option>
-                        <option value="D3" {{$data->last_edu == 'd3' ? 'selected' : ''}}>D3</option>
-                        <option value="SMA" {{$data->last_edu == 'sma' ? 'selected' : ''}}>SMA</option>
-                        <option value="SMP" {{$data->last_edu == 'smp' ? 'selected' : ''}}>SMP</option>
-                        <option value="SD" {{$data->last_edu == 'sd' ? 'selected' : ''}}>SD</option>
+                        <option value="S3" {{$data->last_edu == 'S3' ? 'selected' : ''}}>S3</option>
+                        <option value="S2" {{$data->last_edu == 'S2' ? 'selected' : ''}}>S2</option>
+                        <option value="S1" {{$data->last_edu == 'S1' ? 'selected' : ''}}>S1</option>
+                        <option value="D3" {{$data->last_edu == 'D3' ? 'selected' : ''}}>D3</option>
+                        <option value="SMA" {{$data->last_edu == 'SMA' ? 'selected' : ''}}>SMA</option>
+                        <option value="SMP" {{$data->last_edu == 'SMP' ? 'selected' : ''}}>SMP</option>
+                        <option value="SD" {{$data->last_edu == 'SD' ? 'selected' : ''}}>SD</option>
                         <option value="Lain-lain" {{$data->last_edu == 'lain-lain' ? 'selected' : ''}}>Lainnya</option>
                     </select>
                     <div class="help-block form-text with-errors form-control-feedback">
