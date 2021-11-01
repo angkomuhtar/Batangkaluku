@@ -355,10 +355,43 @@
             </div>
         </div>
     </section>
+
+
+    <section class="container">
+        <div class="grid grid-cols-3 gap-5">
+            <div class="">
+                <h3 class="font-bold">
+                    Youtube
+                </h3>
+                <div class="flex border-b border-border py-5">
+                    <img src="{{$channelsInfo->img}}" alt="" class="w-16 h-16 rounded-full object-cover" >
+                    <div class="grid gap-1 px-5">
+                        <h3 class="font-semibold text-lg">
+                            {{$channelsInfo->name}}
+                        </h3>
+                        <p class="text-sm font-thin text-gray-500">
+                            {{$channelsInfo->subs}} Subscriber
+                        </p>
+                        <div class="g-ytsubscribe" data-channelid="UCx9t3TUybwKjPEhD26ONOsA" data-layout="default" data-theme="dark" data-count="hidden"></div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-5 gap-2 py-3">
+                    <iframe class="w-full h-48 rounded-md col-span-5" id="y-player" src="https://www.youtube.com/embed/XRIXiO9sf9I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    @foreach($latestVideo AS $row)
+                        <a href="#" class="y-list" data-id="{{$row->id->videoId}}">
+                            <img class="h-auto w-full object-cover rounded-md" src="{{ $row->snippet->thumbnails->medium->url}}" alt="">
+                        </a>
+                    @endforeach
+                </div>
+            </div>
+            
+        </div>
+    </section>
 @endsection
 
 @push('add-script')
-
+    <script src="https://apis.google.com/js/platform.js"></script>
     <script>
         let weather = {
             apikey: "084a2d4cc7b7bcad0eca16b89d961937",
@@ -449,6 +482,12 @@
                     var covid = localStorage.getItem('covid');
                     showCovid(covid)
                 })
+
+            $(".y-list").click(function(){
+                event.preventDefault();
+                console.log($(this).data('id'));
+                $("#y-player").attr("src", "https://www.youtube.com/embed/"+$(this).data('id'))
+            })
         })
 
         function showCovid(res) {
