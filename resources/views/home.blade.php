@@ -1,11 +1,12 @@
 @extends('app')
 
 @section('main')
+
     <section class="container">
         <div class="swiper-container mySwiper">
             <div class="swiper-wrapper">
                 @foreach ($slider AS $row)
-                    <a href="#" class="swiper-slide">
+                    <a href="{{$row->url ?? '#'}}" class="swiper-slide">
                         <img src="{{asset('storage/'.$row->image)}}" alt="">
                     </a>
                 @endforeach
@@ -193,15 +194,14 @@
         </h2>
         <div class="swiper-container diklat">
             <div class="swiper-wrapper">
-                @foreach($news_pelatihan AS $row)
+                @foreach($info_pelatihan AS $row)
                     <div class="swiper-slide">
                         <div class="rounded-sm">
-                            <a href="{{route('artikel.detail',['title' => $row->title_str, 'id' => $row->id,'type' => $row->type, 'lang' => $lang])}}">
+                            <a href="{{route('layanan.pelatihan.detail',['id' => $row->id ,'lang' => $lang])}}">
                                 <img class="rounded-sm w-auto h-full" src="{{asset('storage/'.$row->image)}}" alt="">
-                                <p class="text-secondary font-semibold text-xs mt-5 mb-1">{{__('general.artikel_'.$row->type)}}</p>
                                 <h3 class="font-semibold text-xl mb-3">{{$lang == 'en' ? ($row->title_en ?? $row->title) : $row->title}}</h3>
                                 <!-- <p class="mb-3 font-normal text-sm text-darkGrey">{{$row->desc_str}}...</p> -->
-                                <p class="mb-3 font-normal text-xs text-darkLight">{{tanggal($row->published_time)}}</p>
+                                <p class="mb-3 font-normal text-xs text-darkLight">{{tanggal($row->created_at)}}</p>
                             </a>
                         </div>
                     </div>
@@ -249,7 +249,7 @@
         </h2>
 
         <div class="grid grid-cols-4 lg:grid-cols-8 gap-5 justify-items-center lg:px-36">
-            
+
             <a href="http://bbpp-batangkaluku-ppid.pertanian.go.id/" target="_blank" class="py-10 w-full border border-border rounded-sm col-span-2 flex justify-center">
                 <div class="flex flex-col justify-center justify-items-center items-center">
                     <svg class="w-10 lg:w-20" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -273,7 +273,7 @@
                     <h5 class="text-darkGrey text-sm lg:text-xl font-semibold text-center mt-5">E-Personal</h5>
                 </div>
             </a>
-            
+
 
             <a href="#" onClick="alert('Sementara tidak dapat diakses')" class="py-10 w-full border border-border rounded-sm col-span-2 flex justify-center">
                 <div class="flex flex-col justify-center justify-items-center items-center">
@@ -285,7 +285,7 @@
                     <h5 class="text-darkGrey text-sm lg:text-xl font-semibold text-center mt-5">e-p4s</h5>
                 </div>
             </a>
-            
+
 
             <a href="http://lib.bppsdmp.pertanian.go.id/kaluku/" target="_blank" class="py-10 w-full border border-border rounded-sm col-span-2 flex justify-center">
                 <div class="flex flex-col justify-center justify-items-center items-center">
@@ -333,7 +333,7 @@
                 </div>
             </a>
 
-            
+
 
         </div>
 
@@ -358,38 +358,141 @@
 
 
     <section class="container">
-        <div class="grid grid-cols-3 gap-5">
-            <div class="">
-                <h3 class="font-bold">
-                    Youtube
-                </h3>
-                <div class="flex border-b border-border py-5">
-                    <img src="{{$channelsInfo->img}}" alt="" class="w-16 h-16 rounded-full object-cover" >
-                    <div class="grid gap-1 px-5">
-                        <h3 class="font-semibold text-lg">
-                            {{$channelsInfo->name}}
-                        </h3>
-                        <p class="text-sm font-thin text-gray-500">
-                            {{$channelsInfo->subs}} Subscriber
-                        </p>
-                        <div class="g-ytsubscribe" data-channelid="UCx9t3TUybwKjPEhD26ONOsA" data-layout="default" data-theme="dark" data-count="hidden"></div>
+            <div class="grid grid-cols-3 gap-5 lg:gap-x-7">
+                
+
+                <div class="">
+                    <h3 class="font-bold">
+                        Twitter
+                    </h3>
+                    <div class='sk-ww-twitter-feed' data-embed-id='154236'></div><script src='https://widgets.sociablekit.com/twitter-feed/widget.js' async defer></script>
+                </div>
+                
+                <div class="">
+                    <h3 class="font-bold">
+                        Youtube
+                    </h3>
+                    <div class='sk-ww-youtube-channel-videos' data-embed-id='154240'></div><script src='https://widgets.sociablekit.com/youtube-channel-videos/widget.js' async defer></script>
+                </div>
+
+                <div class="">
+                    <h3 class="font-bold">
+                        Instagram
+                    </h3>
+                    
+                </div>
+
+
+
+                
+            </div>
+        </section>
+
+    @isset($latestVideo->items[0])
+        <section class="container">
+            <div class="grid grid-cols-3 gap-5 lg:gap-x-7">
+                <div class="">
+                    <h3 class="font-bold">
+                        Youtube
+                    </h3>
+                    <div class="flex border-b border-border py-5">
+                        <img src="{{$channelsInfo->img}}" alt="" class="w-16 h-16 rounded-full object-cover" >
+                        <div class="grid gap-1 px-5">
+                            <h3 class="font-semibold text-lg">
+                                {{$channelsInfo->name}}
+                            </h3>
+                            <p class="text-sm font-thin text-gray-500">
+                                {{$channelsInfo->subs}} Views
+                            </p>
+                            <div class="g-ytsubscribe" data-channelid="UCx9t3TUybwKjPEhD26ONOsA" data-layout="default" data-theme="dark" data-count="hidden"></div>
+                        </div>
+                    </div>
+
+                    <div class="py-2 max-h-social overflow-y-auto">
+                        <iframe class="w-full h-48 rounded-md col-span-5 mb-5" id="y-player" src="https://www.youtube.com/embed/{{$latestVideo->items[0]->id->videoId}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <div class="py-5">
+                            <div class="grid grid-cols-2 gap-x-5 gap-y-7" id="listVideo">
+                                @foreach($latestVideo->items AS $row)
+                                <a href="#" class="y-list" data-id="{{$row->id->videoId}}">
+                                    <img class="h-auto w-full object-cover rounded-md" src="{{ $row->snippet->thumbnails->medium->url}}" alt="{{$row->snippet->title}}">
+                                    <p class="text-xs font-light px-2 py-3 line-clamp capitalize">
+                                        {{$row->snippet->title}}
+                                    </p>
+                                </a>
+                                @endforeach
+                            </div>
+                            <div class="flex justify-center my-5">
+                                <a href="#" class="capitalize py-2 px-4 text-secondary bg-white border border-secondary text-sm font-semibold rounded-full" id="moreVideo" data-id="{{$latestVideo->nextPageToken}}">
+                                    Lebih Banyak Video
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <div class="grid grid-cols-5 gap-2 py-3">
-                    <iframe class="w-full h-48 rounded-md col-span-5" id="y-player" src="https://www.youtube.com/embed/XRIXiO9sf9I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    @foreach($latestVideo AS $row)
-                        <a href="#" class="y-list" data-id="{{$row->id->videoId}}">
-                            <img class="h-auto w-full object-cover rounded-md" src="{{ $row->snippet->thumbnails->medium->url}}" alt="">
-                        </a>
-                    @endforeach
+                <div class="">
+                    <h3 class="font-bold">
+                        Twitter
+                    </h3>
+                    <div class="flex border-b border-border py-5">
+                        <img src="{{$channelsInfo->img}}" alt="" class="w-16 h-16 rounded-full object-cover" >
+                        <div class="grid gap-1 px-5">
+                            <h3 class="font-semibold text-lg">
+                                {{$twitter->name}}
+                            </h3>
+                            <p class="text-sm font-thin text-gray-500">
+                               {{'@'.$twitter->username}} Subscriber
+                            </p>
+                            <a href="https://twitter.com/bbpp_bk?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @bbpp_bk</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                        </div>
+                    </div>
+                    <div class="overflow-y-auto max-h-social py-2">
+                        <a class="twitter-timeline" href="https://twitter.com/bbpp_bk?ref_src=twsrc%5Etfw">Tweets by bbpp_bk</a> 
+                    </div>
+                    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                    <div class='sk-ww-twitter-feed' data-embed-id='154236'></div>
+                    <script src='https://widgets.sociablekit.com/twitter-feed/widget.js' async defer></script>
                 </div>
-            </div>
-            
-        </div>
-    </section>
-@endsection
+                
+                <div class="">
+                    <h3 class="font-bold">
+                        Facebook
+                    </h3>
+                    <div class="flex border-b border-border py-5">
+                        <img src="{{$channelsInfo->img}}" alt="" class="w-16 h-16 rounded-full object-cover" >
+                        <div class="grid gap-1 px-5">
+                            <h3 class="font-semibold text-lg">
+                                BBPP Batangkaluku
+                            </h3>
+                            <!-- <div class="g-ytsubscribe" data-channelid="UCx9t3TUybwKjPEhD26ONOsA" data-layout="default" data-theme="dark" data-count="hidden"></div> -->
+                        </div>
+                    </div>
+                    <div class="">
+                        <div class="fb-page" 
+                            data-href="https://www.facebook.com/bbpp.batangkaluku.pertanian/" 
+                            data-tabs="timeline,messages"
+                            data-width="500" 
+                            data-height="" 
+                            data-small-header="false" 
+                            data-adapt-container-width="true" 
+                            data-hide-cover="false" 
+                            data-show-facepile="true">
+                            <blockquote cite="https://www.facebook.com/bbpp.batangkaluku.pertanian/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/bbpp.batangkaluku.pertanian/">BBPP Batangkaluku</a></blockquote></div>
+                        <div id="fb-root"></div>
+                        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/id_ID/sdk.js#xfbml=1&version=v12.0&appId=573429497077081&autoLogAppEvents=1" nonce="xwN8gDcR"></script>
+                    </div>
+                </div>
 
+                
+
+
+                
+            </div>
+        </section>
+    @endisset
+
+    @endsection
+    
 @push('add-script')
     <script src="https://apis.google.com/js/platform.js"></script>
     <script>
@@ -488,6 +591,25 @@
                 console.log($(this).data('id'));
                 $("#y-player").attr("src", "https://www.youtube.com/embed/"+$(this).data('id'))
             })
+
+        })
+
+        $("#moreVideo").on("click", function(e){
+            e.preventDefault();
+            var id = $(this).data("id");
+            console.log(id);
+            // getMoreData(id);
+            $.get('{{url('ajax/youtube')}}/'+id)
+                .then(function(res) {
+                    var html = "";
+                    $.each( res.items, function( key, value ) {
+                        html = '<a href="#" class="y-list" data-id="'+value.id.videoId+'">'+
+                                '<img class="h-auto w-full object-cover rounded-md" src="'+value.snippet.thumbnails.medium.url+'" alt="'+value.snippet.title+'">'+
+                                '<p class="text-xs font-light px-2 py-3 line-clamp capitalize">'+value.snippet.title+'</p></a>';
+                        $('#listVideo').append(html);
+                    });
+                    $("#moreVideo").data('id', res.nextPageToken);
+                })
         })
 
         function showCovid(res) {

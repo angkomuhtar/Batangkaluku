@@ -147,3 +147,18 @@
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
 }
+
+::-webkit-scrollbar {
+    @apply w-2 rounded-md;
+  }
+  
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    @apply bg-secondary rounded-md; 
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }

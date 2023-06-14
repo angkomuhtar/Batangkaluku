@@ -32,7 +32,7 @@ Route::group(['middleware' => 'visitor-counter'], function () {
     $locale = request()->query('lang', 'id');
     app()->setLocale($locale);
     Route::get('', [HomeController::class, 'index'])->name('home');
-
+    Route::post('rate',[HomeController::class,'rate'])->name('rate');
     Route::group(['prefix' => 'lembaga'], function () use ($locale) {
         Route::get('',function () use ($locale){
             return redirect()->route('lembaga.tentang',['lang' => $locale]);
@@ -51,6 +51,7 @@ Route::group(['middleware' => 'visitor-counter'], function () {
     Route::get('layanan',function () use ($locale){
         return redirect()->route('layanan',['lang' => $locale,'service' => 'sop_balai']);
     });
+    Route::get('layanan/info_pelatihan/{id}',[LayananController::class,'detail'])->name('layanan.pelatihan.detail');
     Route::group(['prefix' => 'layanan/{service}'], function () {
         Route::get('',[LayananController::class,'index'])->name('layanan');
     });
@@ -165,5 +166,10 @@ Route::group(['prefix' => 'dashboard'], function () {
 });
 Route::group(['prefix' => 'ajax'], function () {
     Route::get('covid', [DashboardController::class, 'getDataCovid'])->name('ajax.covid');
+    Route::get('rating', [DashboardController::class, 'getRating'])->name('ajax.rating');
+    Route::get('profile/{id}', [DashboardController::class, 'getProfile'])->name('ajax.profile');
+    Route::get('youtube/{id}', [HomeController::class, 'getYoutubeData'])->name('ajax.youtube');
+    // Route::get('youtube/{id}', [DashboardController::class, 'youtube'])->name('ajax.rating');
+    // Route::get('rating', [DashboardController::class, 'getRating'])->name('ajax.rating');
 });
 

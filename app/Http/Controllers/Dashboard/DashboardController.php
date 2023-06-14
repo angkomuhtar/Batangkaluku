@@ -1,8 +1,12 @@
 <?php
 
 namespace App\Http\Controllers\Dashboard;
+use Illuminate\Support\Facades\Http;
+use \stdClass;
 
 use App\Http\Controllers\Controller;
+use App\Models\HumanResources;
+use App\Models\Rating;
 use GuzzleHttp\Client;
 
 class DashboardController extends Controller
@@ -36,4 +40,22 @@ class DashboardController extends Controller
         return response()->json($res[0]);
     }
 
+    public function getRating(){
+        $rating = Rating::groupBy('rate')->selectRaw('count(rate) AS count_rate, rate')->get();
+        $data = [
+            'rate_1' => 0,
+            'rate_2' => 0,
+            'rate_3' => 0,
+            'rate_4' => 0
+        ];
+        foreach ($rating AS $rate){
+            $data['rate_'.$rate->rate] = $rate->count_rate;
+        }
+        return response()->json($data);
+    }
+
+    public function getProfile($id){
+        $profile = HumanResources::with('awards')->find($id);
+        return response()->json($profile);
+    }
 }

@@ -35,6 +35,7 @@
                     <thead>
                     <tr>
                         <th>Gambar</th>
+                        <th>Url</th>
                         <th>Header</th>
                         <th>Konten</th>
                         <th>Urutan</th>
@@ -45,6 +46,7 @@
                     <tfoot>
                     <tr>
                         <th>Gambar</th>
+                        <th>Url</th>
                         <th>Header</th>
                         <th>Konten</th>
                         <th>Urutan</th>
@@ -57,6 +59,9 @@
                         <tr>
                             <td>
                                 <img src="{{asset('storage/'.$row->image)}}" alt="{{$row->image}}" style="max-width: 300px">
+                            </td>
+                            <td>
+                                <a href="{{$row->url}}" target="_blank">{{$row->url}}</a>
                             </td>
                             <td>
                                 <b>Bahasa Indonesia : </b><br>

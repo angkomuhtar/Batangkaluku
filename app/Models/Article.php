@@ -9,6 +9,7 @@ use Illuminate\Support\Str;
  * @property integer $id
  * @property string $image
  * @property string $title
+ * @property string $attachment
  * @property string $description
  * @property string $content
  * @property string $title_en
@@ -43,7 +44,9 @@ class Article extends Model
     /**
      * @var array
      */
-    protected $fillable = ['image', 'title', 'description', 'content', 'title_en', 'description_en', 'content_en', 'type', 'source', 'creator', 'published_time', 'is_active', 'user_create', 'user_update', 'created_at', 'updated_at'];
+    protected $fillable = ['image',
+        'attachment',
+        'title', 'description', 'content', 'title_en', 'description_en', 'content_en', 'type', 'source', 'creator', 'published_time', 'is_active', 'user_create', 'user_update', 'created_at', 'updated_at'];
     protected $dates = [
         'published_time'
     ];

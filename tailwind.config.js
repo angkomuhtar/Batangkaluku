@@ -26,7 +26,11 @@ module.exports = {
         "darken" : "#043A3A"
       },
       height: {
-        "banner" : "480px"
+        "banner" : "480px",
+        'social' : '30rem'
+      },
+      maxHeight: {
+        'social' : '30rem'
       }
     },
     fontFamily :{

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ca9d20335eddfdf17ae627ed773e796f",
+    "content-hash": "b61be916f78fcfc4004d9e5216842795",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1710,6 +1710,57 @@
             "time": "2021-09-25T08:23:19+00:00"
         },
         {
+            "name": "mashape/unirest-php",
+            "version": "v3.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Mashape/unirest-php.git",
+                "reference": "842c0f242dfaaf85f16b72e217bf7f7c19ab12cb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Mashape/unirest-php/zipball/842c0f242dfaaf85f16b72e217bf7f7c19ab12cb",
+                "reference": "842c0f242dfaaf85f16b72e217bf7f7c19ab12cb",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "codeclimate/php-test-reporter": "0.1.*",
+                "phpunit/phpunit": "~4.4"
+            },
+            "suggest": {
+                "ext-json": "Allows using JSON Bodies for sending and parsing requests"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Unirest\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Unirest PHP",
+            "homepage": "https://github.com/Mashape/unirest-php",
+            "keywords": [
+                "client",
+                "curl",
+                "http",
+                "https",
+                "rest"
+            ],
+            "support": {
+                "email": "opensource@mashape.com",
+                "issues": "https://github.com/Mashape/unirest-php/issues",
+                "source": "https://github.com/Mashape/unirest-php/tree/master"
+            },
+            "time": "2016-08-11T17:49:21+00:00"
+        },
+        {
             "name": "monolog/monolog",
             "version": "2.3.5",
             "source": {
@@ -2893,6 +2944,57 @@
                 }
             ],
             "time": "2021-09-25T23:10:38+00:00"
+        },
+        {
+            "name": "restyler/instagram-php-scraper",
+            "version": "v1.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/restyler/instagram-php-scraper.git",
+                "reference": "8f1d924702c7336bbff5ced9ed9bfe51b7764fb6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/restyler/instagram-php-scraper/zipball/8f1d924702c7336bbff5ced9ed9bfe51b7764fb6",
+                "reference": "8f1d924702c7336bbff5ced9ed9bfe51b7764fb6",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "ext-json": "*",
+                "mashape/unirest-php": "3.0.*",
+                "php": ">=5.4.0",
+                "psr/simple-cache": "~1.0"
+            },
+            "require-dev": {
+                "phpfastcache/phpfastcache": "^7.1",
+                "phpunit/phpunit": "5.5.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "InstagramScraper\\": "src/InstagramScraper/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "restyler"
+                }
+            ],
+            "description": "Profixied Instagram PHP Scraper. Get account information, photos and videos without any authorization, via smart proxy balancer.",
+            "homepage": "https://github.com/restyler/instagram-php-scraper/tree/proxified",
+            "keywords": [
+                "instagram",
+                "scraper"
+            ],
+            "support": {
+                "source": "https://github.com/restyler/instagram-php-scraper/tree/v1.0.3"
+            },
+            "time": "2020-12-20T05:51:59+00:00"
         },
         {
             "name": "spatie/laravel-permission",

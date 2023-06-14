@@ -33,4 +33,14 @@ class LayananController extends Controller
         }
         return view('layanan.index', compact('lang', 'data', 'visitor'));
     }
+
+    public function detail($id){
+        $lang = request()->query('lang', 'id');
+        $data = TrainingInfo::where('is_active', 1)->find($id);
+        $other = TrainingInfo::where('is_active',1)
+            ->where('id','!=',$id)
+            ->inRandomOrder()->take(3)->get();
+        $visitor = RouteVisitor::get();
+        return view('layanan.detail',compact('data','lang','visitor','other'));
+    }
 }

@@ -13,6 +13,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $user_update
  * @property string $created_at
  * @property string $updated_at
+ * @property boolean $is_image
  */
 class Content extends Model
 {
@@ -33,7 +34,9 @@ class Content extends Model
     /**
      * @var array
      */
-    protected $fillable = ['name', 'content', 'content_en', 'user_create', 'user_update', 'created_at', 'updated_at'];
+    protected $fillable = ['name', 'content', 'content_en',
+        'is_image',
+        'user_create', 'user_update', 'created_at', 'updated_at'];
 
     public function getNameStrAttribute(){
         return ucwords(str_replace('_',' ',$this->name));

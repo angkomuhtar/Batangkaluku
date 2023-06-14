@@ -27,6 +27,12 @@ class ArtikelController extends Controller
             ->where('published_time', '<=', now())
             ->find($id);
         $visitor = RouteVisitor::get();
-        return view('artikel.detail', compact('lang', 'data', 'visitor'));
+        $news = Article::where('is_active', 1)
+            ->where('type', $type)
+            ->where('id','!=',$id)
+            ->take(3)
+            ->inRandomOrder()
+            ->get();
+        return view('artikel.detail', compact('lang', 'data', 'visitor','news'));
     }
 }

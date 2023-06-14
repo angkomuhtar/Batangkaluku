@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 class ArticleController extends DashboardController
 {
     protected $image_path = 'artikel';
-
+    protected $attachment_path = 'attachment';
     public function __construct()
     {
         parent::__construct();
@@ -84,12 +84,17 @@ class ArticleController extends DashboardController
             'source' => '',
             'creator' => 'required',
             'published_time' => 'required',
-            'is_active' => 'boolean|required'
+            'is_active' => 'boolean|required',
+            'attachment' => 'file',
         ]);
         $data['type'] = $type;
         if ($data['image']) {
             $ext = $request->file('image')->getClientOriginalExtension();
             $data['image'] = $request->file('image')->storeAs($this->image_path, 'article_' . date('YmdHis') . '.' . $ext, 'public');
+        }
+        if (isset($data['attachment'])){
+            $ext = $request->file('attachment')->getClientOriginalExtension();
+            $data['attachment'] = $request->file('attachment')->storeAs($this->attachment_path, $data['title'] . '_' . date('YmdHis') . '.' . $ext, 'public');
         }
         try {
             DB::beginTransaction();
@@ -119,12 +124,17 @@ class ArticleController extends DashboardController
             'source' => '',
             'creator' => 'required',
             'published_time' => 'required',
-            'is_active' => 'boolean|required'
+            'is_active' => 'boolean|required',
+            'attachment' => 'file',
         ]);
         $data['type'] = $type;
         if (isset($data['image'])) {
             $ext = $request->file('image')->getClientOriginalExtension();
             $data['image'] = $request->file('image')->storeAs($this->image_path, 'article_' . date('YmdHis') . '.' . $ext, 'public');
+        }
+        if (isset($data['attachment'])){
+            $ext = $request->file('attachment')->getClientOriginalExtension();
+            $data['attachment'] = $request->file('attachment')->storeAs($this->attachment_path, $data['title'] . '_' . date('YmdHis') . '.' . $ext, 'public');
         }
         try {
             DB::beginTransaction();

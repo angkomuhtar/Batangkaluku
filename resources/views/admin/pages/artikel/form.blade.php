@@ -137,6 +137,17 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <label for=""> Lampiran </label>
+                    <input type="file" name="attachment" class="form-control"
+                           data-error="Lampiran is required"
+                           placeholder="Lampiran">
+                    @if ($data->attachment)
+                        <a href="{{asset('storage/'.$data->attachment)}}" target="_blank">Lampiran</a>
+                    @endif
+                    <div class="help-block form-text with-errors form-control-feedback">
+                    </div>
+                </div>
+                <div class="form-group">
                     <label>Status *</label>
                     <div class="form-check">
                         <label class="form-check-label"><input

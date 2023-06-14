@@ -33,13 +33,32 @@ class HumanResources extends Model
     /**
      * @var array
      */
-    protected $fillable = ['department_id', 'image', 'name', 'nip', 'position', 'position_en', 'level_id', 'order_id', 'is_active', 'user_create', 'user_update', 'created_at', 'updated_at'];
+    protected $fillable = ['department_id', 'image', 'name', 'nip', 'position', 'position_en', 'level_id', 'order_id', 'is_active', 'user_create', 'user_update', 'created_at', 'updated_at',
+        'gender',
+        'religion',
+        'last_edu',
+        'univ',
+        'major',
+        'rank',
+        'department',
+        'email',
+    ];
 
+    public $appends = ['gender_str'];
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function department()
     {
         return $this->belongsTo('App\Models\Department');
+    }
+
+    public function awards()
+    {
+        return $this->hasMany('App\Models\Award', 'human_resource_id');
+    }
+
+    public function getGenderStrAttribute(){
+        return $this->gender == 'm' ? 'Laki - Laki' : 'Perempuan';
     }
 }

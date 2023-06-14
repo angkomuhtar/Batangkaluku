@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $text_content
  * @property string $text_header_en
  * @property string $text_content_en
+ * @property string $url
  * @property int $order_id
  * @property boolean $is_active
  * @property int $user_create
@@ -37,6 +38,8 @@ class Slider extends Model
     /**
      * @var array
      */
-    protected $fillable = ['image', 'text_header', 'text_content', 'text_header_en', 'text_content_en', 'order_id', 'is_active', 'user_create', 'user_update', 'created_at', 'updated_at'];
+    protected $fillable = ['image', 'text_header', 'text_content', 'text_header_en', 'text_content_en',
+        'url',
+        'order_id', 'is_active', 'user_create', 'user_update', 'created_at', 'updated_at'];
 
 }
