@@ -379,7 +379,7 @@
                     <h3 class="font-bold">
                         Instagram
                     </h3>
-                    
+                    <div class='sk-instagram-feed' data-embed-id='154294'></div><script src='https://widgets.sociablekit.com/instagram-feed/widget.js' async defer></script>
                 </div>
 
 
